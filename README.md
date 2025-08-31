@@ -1,6 +1,6 @@
-# Quality Hub
+# CodeGuard Pro
 
-**Quality Hub** is a comprehensive VS Code extension that brings together all the essential code quality, security, and testing tools into one convenient interface. Stop switching between multiple extensions and terminal commands - manage your entire code quality workflow from a single sidebar panel.
+**CodeGuard Pro** is a comprehensive VS Code extension that brings together all the essential code quality, security, and testing tools into one convenient interface. Stop switching between multiple extensions and terminal commands - manage your entire code quality workflow from a single sidebar panel.
 
 ## 🚀 Features
 
@@ -51,24 +51,24 @@
 
 ### Primary Commands
 
-- `Quality Hub: Lint & Fix Code` - Run linting with automatic fixes
-- `Quality Hub: Run Security Scan` - Check for security vulnerabilities
-- `Quality Hub: Advanced Security Audit` - Comprehensive security analysis
-- `Quality Hub: Run E2E Tests` - Execute end-to-end tests
+- `CodeGuard Pro: Lint & Fix Code` - Run linting with automatic fixes
+- `CodeGuard Pro: Run Security Scan` - Check for security vulnerabilities
+- `CodeGuard Pro: Advanced Security Audit` - Comprehensive security analysis
+- `CodeGuard Pro: Run E2E Tests` - Execute end-to-end tests
 
 ### Analysis Commands
 
-- `Quality Hub: Code Metrics & Complexity` - Detailed complexity analysis
-- `Quality Hub: Find Duplicate Code` - Detect code duplication
-- `Quality Hub: Analyze Dependencies` - Check unused/vulnerable dependencies
-- `Quality Hub: Code Structure Analysis` - Dependency graphs and architecture
-- `Quality Hub: Check Dependency Updates` - Find outdated packages
+- `CodeGuard Pro: Code Metrics & Complexity` - Detailed complexity analysis
+- `CodeGuard Pro: Find Duplicate Code` - Detect code duplication
+- `CodeGuard Pro: Analyze Dependencies` - Check unused/vulnerable dependencies
+- `CodeGuard Pro: Code Structure Analysis` - Dependency graphs and architecture
+- `CodeGuard Pro: Check Dependency Updates` - Find outdated packages
 
 ### Utility Commands
 
-- `Quality Hub: Type Check` - Run TypeScript type checking
-- `Quality Hub: Generate Quality Report` - Create detailed quality report
-- `Quality Hub: Show Quality Panel` - Open the Quality Hub sidebar panel
+- `CodeGuard Pro: Type Check` - Run TypeScript type checking
+- `CodeGuard Pro: Generate Quality Report` - Create detailed quality report
+- `CodeGuard Pro: Show Quality Panel` - Open the CodeGuard Pro sidebar panel
 
 ## ⚙️ Configuration
 
@@ -76,14 +76,14 @@ Configure the extension through VS Code settings:
 
 ```json
 {
-  "quality-hub.enableStatusBar": true,
-  "quality-hub.autoLintOnSave": false,
-  "quality-hub.lintTool": "auto",
-  "quality-hub.testFramework": "playwright",
-  "quality-hub.duplicateCodeThreshold": 100,
-  "quality-hub.complexityThreshold": 15,
-  "quality-hub.enableSonarAnalysis": true,
-  "quality-hub.securityLevel": "moderate"
+  "codeguard-pro.enableStatusBar": true,
+  "codeguard-pro.autoLintOnSave": false,
+  "codeguard-pro.lintTool": "auto",
+  "codeguard-pro.testFramework": "playwright",
+  "codeguard-pro.duplicateCodeThreshold": 100,
+  "codeguard-pro.complexityThreshold": 15,
+  "codeguard-pro.enableSonarAnalysis": true,
+  "codeguard-pro.securityLevel": "moderate"
 }
 ```
 
@@ -151,15 +151,15 @@ The extension tracks and reports on:
 
 1. Install the extension from VS Code marketplace
 2. Open a project in VS Code
-3. The Quality Hub panel will appear in the Explorer sidebar
+3. The CodeGuard Pro panel will appear in the Explorer sidebar
 4. Click any tool to start analysis
 
 ### Quick Start
 
 1. **Open Command Palette** (`Ctrl+Shift+P`)
-2. Search for "Quality Hub"
-3. Run `Quality Hub: Lint & Fix Code` to start
-4. Check the **Quality Hub panel** in Explorer for more tools
+2. Search for "CodeGuard Pro"
+3. Run `CodeGuard Pro: Lint & Fix Code` to start
+4. Check the **CodeGuard Pro panel** in Explorer for more tools
 5. Monitor the **status bar** for quick access
 
 ## 📈 Development
