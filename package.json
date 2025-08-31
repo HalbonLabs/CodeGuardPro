@@ -2,7 +2,7 @@
   "name": "codeguard-pro",
   "displayName": "CodeGuard Pro",
   "description": "Professional code quality, security, and testing suite with ESLint, Biome, Playwright, security scanning, and comprehensive analysis tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "HalbonLabs",
   "author": {
     "name": "CodeGuard Pro Team",
@@ -45,7 +45,8 @@
     "javascript"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onView:quality-hub.sidebarView"
   ],
   "main": "./out/simple-extension.js",
   "contributes": {
@@ -259,7 +260,7 @@
       "quality-hub-webview": [
         {
           "id": "quality-hub.sidebarView",
-          "name": "",
+          "name": "Quality Tools",
           "type": "webview",
           "when": "true",
           "icon": "$(shield)"
