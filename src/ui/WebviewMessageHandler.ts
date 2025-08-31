@@ -38,8 +38,8 @@ export class WebviewMessageHandler {
   }
 
   private handleRunToolWithAI(data: WebviewMessage): void {
-    if (data.toolId && data.toolName) {
-      this.updateToolLastRunTime(data.toolId);
+    if (data.toolName) {
+      // Don't update last run time - we're only sending a prompt to chat, not running the tool
       const prompt = this.generateAIPrompt(data.toolName);
       vscode.commands.executeCommand("workbench.action.chat.open", {
         query: prompt,
@@ -56,37 +56,14 @@ export class WebviewMessageHandler {
   }
 
   private generateAIPrompt(toolName: string): string {
-    const baseMessage = `I need your help to run ${toolName} analysis on this project. ` +
-      `IMPORTANT: Do not execute any VS Code commands or extensions - only run terminal/command line tools.`;
-    
-    const steps = `
+    return `Hi! I'd like some help with ${toolName} for my project. 
 
-Please follow these steps:
+Could you help me understand:
+- How to properly set up and configure ${toolName} for this codebase
+- What are the best practices and recommended settings
+- How to run ${toolName} analysis and interpret the results
+- What common issues ${toolName} can detect and how to fix them
 
-1. **Install Dependencies**: First check if ${toolName} is installed, and if not, ` +
-      `install any required packages (npm/npx/global installation as needed)
-
-2. **Execute Terminal Command**: Run the ${toolName} analysis using appropriate ` +
-      `terminal commands (NOT VS Code commands)
-
-3. **Monitor Output**: Carefully review all output, warnings, errors, and recommendations
-
-4. **Apply Fixes**: After the analysis completes, immediately:
-   - Fix any auto-fixable issues (using --fix flags where available)
-   - Apply recommended security patches
-   - Update any outdated dependencies if suggested
-   - Create or update configuration files if needed
-   - Address any critical or high-severity issues found
-
-5. **Summary**: Provide a clear summary of:
-   - What issues were found
-   - What fixes were applied automatically
-   - Any remaining issues that need manual attention
-   - Next recommended actions
-
-Please execute the appropriate terminal commands only and take immediate action on the results. 
-Don't just report issues - fix them where possible!`;
-
-    return baseMessage + steps;
+I'm looking for guidance and advice rather than having commands executed automatically. Thanks!`;
   }
 }

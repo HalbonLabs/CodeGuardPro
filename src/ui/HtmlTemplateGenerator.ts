@@ -232,9 +232,9 @@ export class HtmlTemplateGenerator {
             try {
                 vscode.postMessage({
                     command: 'runToolWithAI',
-                    toolCommand: command,
                     toolName: toolName,
                     toolId: toolId
+                    // Note: intentionally NOT passing toolCommand since AI button only sends prompt to chat
                 });
             } catch (error) {
                 console.error('Error running tool with AI:', error);
