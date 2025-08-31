@@ -86,7 +86,7 @@ function registerSecurityCommands(): vscode.Disposable[] {
     vscode.commands.registerCommand("quality-hub.eslintSecurity", () => {
       runToolCommand(
         "ESLint Security",
-        "npx eslint . --ext .js,.ts --config .eslintrc-security.js",
+        "npx eslint . --ext .js,.ts --plugin=security",
       );
     }),
 
@@ -95,7 +95,7 @@ function registerSecurityCommands(): vscode.Disposable[] {
     }),
 
     vscode.commands.registerCommand("quality-hub.auditCi", () => {
-      runToolCommand("audit-ci", "npx audit-ci --config audit-ci.json");
+      runToolCommand("audit-ci", "npx audit-ci");
     }),
 
     vscode.commands.registerCommand("quality-hub.owaspCheck", () => {
@@ -140,11 +140,11 @@ function registerTestingCommands(): vscode.Disposable[] {
 function registerAnalysisCommands(): vscode.Disposable[] {
   return [
     vscode.commands.registerCommand("quality-hub.sonarJs", () => {
-      runToolCommand("SonarJS", "npx eslint . --ext .js,.ts --config .eslintrc-sonar.js");
+      runToolCommand("SonarJS", "npx eslint . --ext .js,.ts");
     }),
 
     vscode.commands.registerCommand("quality-hub.plato", () => {
-      runToolCommand("Plato", "npx plato -r -d plato-report src/");
+      runToolCommand("Plato", "npx plato -r -d plato-report .");
     }),
 
     vscode.commands.registerCommand("quality-hub.eslintComplexity", () => {
@@ -155,7 +155,7 @@ function registerAnalysisCommands(): vscode.Disposable[] {
     }),
 
     vscode.commands.registerCommand("quality-hub.duplicateCode", () => {
-      runToolCommand("Duplicate Code Detection", "npx jscpd src/");
+      runToolCommand("Duplicate Code Detection", "npx jscpd .");
     }),
 
     vscode.commands.registerCommand("quality-hub.codeStructure", () => {
@@ -171,7 +171,7 @@ function registerAnalysisCommands(): vscode.Disposable[] {
 function registerDependencyCommands(): vscode.Disposable[] {
   return [
     vscode.commands.registerCommand("quality-hub.madgeDeps", () => {
-      runToolCommand("Madge Dependencies", "npx madge --circular --extensions ts,js src/");
+      runToolCommand("Madge Dependencies", "npx madge --circular --extensions ts,js .");
     }),
 
     vscode.commands.registerCommand("quality-hub.depcheck", () => {

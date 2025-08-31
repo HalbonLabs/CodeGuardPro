@@ -1,0 +1,38 @@
+{
+  "example": {
+    "name": "CodeGuard Pro",
+    "version": "1.0.4",
+    "description": "VS Code extension for code quality analysis"
+  },
+  "sampleCode": {
+    "typescript": "function hello(name: string): string {\n  return `Hello, ${name}!`;\n}",
+    "javascript": "function greet(user) {\n  console.log('Hello ' + user);\n  return user;\n}"
+  },
+  "testData": {
+    "validConfig": {
+      "eslint": true,
+      "prettier": true,
+      "typescript": true
+    },
+    "invalidConfig": {
+      "eslint": "invalid",
+      "prettier": null
+    }
+  },
+  "apiResponses": {
+    "sonarqube": {
+      "issues": [
+        {
+          "key": "test-issue-1",
+          "rule": "typescript:S1234",
+          "severity": "MAJOR",
+          "message": "Test issue for demo"
+        }
+      ]
+    },
+    "codacy": {
+      "issues": [],
+      "grade": "A"
+    }
+  }
+}

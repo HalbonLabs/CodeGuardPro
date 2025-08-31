@@ -14,6 +14,40 @@ vsc-extension-quickstart.md
 node_modules/**
 **/node_modules/**
 
+# Exclude large binary dependencies and tools (downloaded when needed)
+dependency-check-bin/**
+*.jar
+
+# Exclude analysis reports (regenerated as needed)
+reports/**
+playwright-report/**
+test-results/**
+
+# Exclude test artifacts and recordings
+cypress/videos/**
+cypress/screenshots/**
+*.mp4
+*.webm
+
+# Exclude OWASP and security analysis files (regenerated)
+owasp-*.json
+dependency-check-sbom.json
+sbom-lockfile.json
+retire-report.json
+*-report.json
+*-analysis.json
+sonarjs-*.json
+eslint-complexity-*.json
+
+# Exclude analysis documentation (can be regenerated)
+*ANALYSIS_REPORT.md
+audit-ci-security-report.md
+retire-security-report.md
+owasp-dependency-check-report.md
+security-check.md
+cypress-analysis-summary.md
+playwright-analysis-summary.md
+
 # Exclude development files
 .github/**
 .git/**
@@ -28,11 +62,30 @@ tests/**
 .eslintrc*
 .gitignore
 .gitattributes
+.depcheckrc
+.dependency-cruiser.js
+.jscpd.json
+.jshintrc
+.madgerc
+.mocharc.json
+.retireignore.json
+.retirejs.json
+.structurerc.json
 tsconfig.json
 webpack.config.js
 rollup.config.js
 jest.config.js
+vitest.config.ts
+vitest.setup.ts
+playwright.config.ts
+cypress.config.ts
 karma.conf.js
+audit-ci.json
+biome.json
+sonar-project.properties
+owasp-config.json
+mocha.setup.js
+package.json.bak
 
 # Exclude documentation that's not essential
 CONTRIBUTING.md
@@ -41,7 +94,20 @@ CHANGELOG.md
 DEPENDENCY_UPDATE_PLAN.md
 SECURITY_AUDIT_REPORT.md
 UI_STATE_MANAGEMENT_FIX.md
+DEPLOYMENT_SUMMARY.md
+PUBLISHING_GUIDE.md
 docs/**
+
+# Exclude development-specific files that shouldn't be distributed
+.prettierignore
+.prettierrc*
+eslint.config.js
+eslint.typescript-type-check.config.js
+simple-extension-sonar.json
+
+# Exclude test fixtures and specific test configurations
+cypress/fixtures/**
+cypress/support/**
 
 # Exclude logs and temporary files
 **/*.log

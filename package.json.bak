@@ -1,0 +1,14 @@
+{
+  "env": ["jest", "mocha"],
+  "globals": [
+    "describe",
+    "it", 
+    "test",
+    "expect",
+    "beforeEach",
+    "afterEach",
+    "beforeAll",
+    "afterAll",
+    "jest"
+  ]
+}

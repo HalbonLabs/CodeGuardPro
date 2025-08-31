@@ -1,0 +1,13 @@
+{
+  "madge": {
+    "threshold": 10,
+    "extensions": ["ts", "js"],
+    "exclude": ["node_modules", "dist", "out", "reports", "*.test.ts", "*.spec.ts"],
+    "format": "json"
+  },
+  "structure": {
+    "ignore": ["node_modules/**", "dist/**", "out/**", "reports/**"],
+    "filePatterns": ["src/**/*.ts", "src/**/*.js"],
+    "outputFormats": ["json", "html", "text"]
+  }
+}

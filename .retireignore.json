@@ -1,0 +1,7 @@
+[
+  {
+    "component": "jquery",
+    "version": "2.0.3",
+    "justification": "jQuery 2.0.3 vulnerability is in Madge test files only - not used in production code or runtime. Madge v8.0.0 is latest version. Risk: Minimal (dev dependency test file only)"
+  }
+]

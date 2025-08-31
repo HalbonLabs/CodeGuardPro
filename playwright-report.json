@@ -1,0 +1,1431 @@
+{
+  "config": {
+    "configFile": "X:\\CodeGuardPro\\playwright.config.ts",
+    "rootDir": "X:/CodeGuardPro/tests/playwright",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Microsoft Edge",
+        "name": "Microsoft Edge",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "X:/CodeGuardPro/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "Google Chrome",
+        "name": "Google Chrome",
+        "testDir": "X:/CodeGuardPro/tests/playwright",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 12,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "extension-analysis.spec.ts",
+      "file": "extension-analysis.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CodeGuard Pro Extension Analysis",
+          "file": "extension-analysis.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ec5c1ef918cd59434064",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-d51b161db67062a62414",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-5f26abcabf236010c297",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-5744a49020b1bd399cdf",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-a2a6787c5273fe2fd1ae",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-770aaeb5cbaf7b2bc2ff",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-2aa222b914c167a3cee5",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-225360583e44cc85cadb",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-af89abd4023d98c5bb22",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-fe77d4a92b9e6da229e5",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-9f4765b04fa7fc8dd7ff",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-dc88fad93725fe1efde6",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-1610a20df558f68c40f6",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-4a5c47d9a675a30f5c16",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-4dced5ce7baf9598e297",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-b1a97549a9a964fd57e5",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-8c64214cc7682f9d3088",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-fc9f90273a782b91a381",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ad35604b093dfb4d38d7",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-55c9e909416ac21f90b7",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ccd0d2a72fe0c08b36d7",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-bb916ced74d7871db799",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-5fb7bc6a175f86ae7857",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-be076d9c2e1c059ae6f7",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ecde1c0e2343af426904",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-14357f4e35b9b319a612",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-454e986d4bd473d826a7",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-bc06979fa1b9e1738026",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-5d9025b92d7797aa5fb2",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-533003eed3f3700edcd9",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-a4018eabd5f88a579060",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-31ce802edfa685a59b31",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-4d065b2d86e589348219",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-177bb68b5f1ae57c25f3",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-484e06dc5a86e9ecc3a2",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-68560952b5c441975d5d",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-e685a93ddeef252894d6",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-80e36541588b34daf23a",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-909a6f1baee411eea07f",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-f69aa520008d51d1b6a0",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-1cf42466ee1ebc991b6e",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ce303ab3fbef69b4e681",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ef5c865f389a32eea1d4",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-20f8029e5387f1baeeb6",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-d5a280f4a2acfbe814c3",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-d9169dae64fa8ac9b0bc",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-6f24b642bc00af492bfb",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-13100a76179634d75689",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-201ba13a54d70591e841",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-755c414282fecfc9793b",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-e4070171f5d19c0aac7c",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-63a169d85d6aeda06415",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-27539ad672b54676c3b2",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Microsoft Edge",
+                  "projectName": "Microsoft Edge",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-135909123c2346ed539f",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            },
+            {
+              "title": "should verify basic web functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-e471bd18e0d16eee31b4",
+              "file": "extension-analysis.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "should handle JavaScript execution",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-1901d7e602a332bf1c56",
+              "file": "extension-analysis.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "should verify console functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-ca307b53c1c71a62b22c",
+              "file": "extension-analysis.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "should verify DOM manipulation capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-1c672ca5955983bf5876",
+              "file": "extension-analysis.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "should verify network request capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-88a461350d53d0a069a0",
+              "file": "extension-analysis.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "should verify local storage functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-92ac42b4bd36fa9163dc",
+              "file": "extension-analysis.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "should verify error handling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-d08aa5798d4b18a27d4f",
+              "file": "extension-analysis.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "should verify responsive design capabilities",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-162ec97b179157000632",
+              "file": "extension-analysis.spec.ts",
+              "line": 80,
+              "column": 7
+            },
+            {
+              "title": "should verify performance basics",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Google Chrome",
+                  "projectName": "Google Chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "581ddfd489d63e83f4fe-b1d1dc70190eb4bb0d00",
+              "file": "extension-analysis.spec.ts",
+              "line": 94,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-31T04:37:12.865Z",
+    "duration": 47.039999999999964,
+    "expected": 0,
+    "skipped": 63,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

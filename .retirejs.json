@@ -1,0 +1,17 @@
+{
+  "ignorefile": ".retireignore.json",
+  "severity": "medium",
+  "outputformat": "json",
+  "verbose": true,
+  "colors": true,
+  "path": [
+    "src",
+    "out"
+  ],
+  "ignore": [
+    "node_modules/*/test/**",
+    "node_modules/*/tests/**",
+    "node_modules/*/example/**",
+    "node_modules/*/examples/**"
+  ]
+}
