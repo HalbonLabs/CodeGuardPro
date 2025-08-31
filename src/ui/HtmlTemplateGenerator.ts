@@ -171,6 +171,22 @@ export class HtmlTemplateGenerator {
             cursor: pointer;
             font-size: 0.9em;
         }
+        .mcp-btn {
+            width: 100%;
+            padding: 6px 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            background: var(--vscode-button-background);
+            color: var(--vscode-button-foreground);
+            border: 1px solid var(--vscode-button-border, transparent);
+        }
+        .mcp-btn:hover {
+            background: var(--vscode-button-hoverBackground);
+        }
         .refresh-btn {
             background: var(--vscode-button-background);
             color: var(--vscode-button-foreground);
@@ -240,6 +256,13 @@ export class HtmlTemplateGenerator {
                 command: 'openSettings'
             });
         }
+
+        function runMCPCategory(category) {
+            vscode.postMessage({
+                command: 'runMCPCategory',
+                category: category
+            });
+        }
     </script>
 </body>
 </html>`;
@@ -273,6 +296,10 @@ export class HtmlTemplateGenerator {
       })
       .join("");
 
+    // Add MCP button for Linting & Formatting category
+    const mcpButton = title === "Linting & Formatting" ? 
+      `<button class="mcp-btn" onclick="runMCPCategory('linting')" title="Run all linting tools via MCP">⚡ Run All (MCP)</button>` : '';
+
     return `
     <div class="category">
         <div class="category-header" onclick="toggleCategory(this)">
@@ -280,6 +307,7 @@ export class HtmlTemplateGenerator {
             <span>${title}</span>
             <span class="expand-icon">▼</span>
         </div>
+        ${mcpButton}
         <div class="category-content">${toolItems}
         </div>
     </div>`;

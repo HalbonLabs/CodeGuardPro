@@ -1,11 +1,21 @@
 import * as vscode from "vscode";
 import { QualityHubSidebarProvider } from "./ui/QualityHubSidebarProvider";
+import { discover } from './mcpDiscovery';
+import { planCategory } from './categoryPlanner';
+import { runCategoryPlan } from './dispatcher';
+import { showResults } from './resultsView';
 
 // Helper function to run terminal commands
 function runToolCommand(toolName: string, command: string): void {
   const terminal = vscode.window.createTerminal(`CodeGuard Pro - ${toolName}`);
   terminal.show();
   terminal.sendText(command);
+}
+
+// Stub for AI fixes functionality
+async function applyAIFixes(results: any): Promise<void> {
+  // TODO: Implement AI-powered auto-fixing
+  console.log('AI fixes would be applied here:', results);
 }
 
 // Setup and register the sidebar provider
@@ -44,6 +54,49 @@ function registerEssentialCommands(): vscode.Disposable[] {
 
     vscode.commands.registerCommand("quality-hub.test", () => {
       vscode.window.showInformationMessage("Quality Hub extension is working! 🎯");
+    }),
+
+    // MCP Category Commands
+    vscode.commands.registerCommand("codeguard.runCategory.linting", async () => {
+      try {
+        // Get current working directory from workspace
+        const workspaceFolders = vscode.workspace.workspaceFolders;
+        if (!workspaceFolders || workspaceFolders.length === 0) {
+          vscode.window.showWarningMessage("CodeGuard: No workspace folder open");
+          return;
+        }
+        const cwd = workspaceFolders[0].uri.fsPath;
+
+        // Read settings
+        const config = vscode.workspace.getConfiguration("codeguard");
+        const enabledIds = config.get<string[]>("category.linting.tools") || ["*"];
+        const aiEnabled = config.get<boolean>("ai.enabled") || false;
+
+        // Discover MCP providers
+        const providers = await discover();
+        
+        // Build execution plan
+        const plan = planCategory(providers, "linting", cwd, enabledIds);
+        
+        // Execute plan
+        const results = await runCategoryPlan(plan);
+        
+        // Apply AI fixes if enabled
+        if (aiEnabled) {
+          await applyAIFixes(results);
+        }
+        
+        // Show results
+        showResults({ 
+          results, 
+          remaining: [] // TODO: Calculate remaining issues from results
+        });
+        
+      } catch (error) {
+        const message = `CodeGuard linting failed: ${error instanceof Error ? error.message : String(error)}`;
+        vscode.window.showErrorMessage(message);
+        console.error('CodeGuard linting error:', error);
+      }
     }),
   ];
 }

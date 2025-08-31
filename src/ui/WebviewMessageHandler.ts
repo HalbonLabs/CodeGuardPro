@@ -1,10 +1,11 @@
 import * as vscode from "vscode";
 
 export interface WebviewMessage {
-  command: "runTool" | "runToolWithAI" | "refresh" | "openSettings";
+  command: "runTool" | "runToolWithAI" | "refresh" | "openSettings" | "runMCPCategory";
   toolId?: string;
   toolCommand?: string;
   toolName?: string;
+  category?: string;
 }
 
 export class WebviewMessageHandler {
@@ -26,6 +27,9 @@ export class WebviewMessageHandler {
         break;
       case "openSettings":
         this.handleOpenSettings();
+        break;
+      case "runMCPCategory":
+        this.handleRunMCPCategory(data);
         break;
     }
   }
@@ -53,6 +57,12 @@ export class WebviewMessageHandler {
 
   private handleOpenSettings(): void {
     vscode.commands.executeCommand("workbench.action.openSettings", "quality-hub");
+  }
+
+  private handleRunMCPCategory(data: WebviewMessage): void {
+    if (data.category) {
+      vscode.commands.executeCommand(`codeguard.runCategory.${data.category}`);
+    }
   }
 
   private generateAIPrompt(toolName: string): string {

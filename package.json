@@ -255,6 +255,31 @@
         "title": "Check Dependency Updates",
         "category": "CodeGuard Pro",
         "icon": "$(arrow-up)"
+      },
+      {
+        "command": "codeguard.runCategory.linting",
+        "title": "CodeGuard: Run Linting (MCP)",
+        "category": "CodeGuard"
+      },
+      {
+        "command": "codeguard.runCategory.testing",
+        "title": "CodeGuard: Run Testing (MCP)",
+        "category": "CodeGuard"
+      },
+      {
+        "command": "codeguard.runCategory.security",
+        "title": "CodeGuard: Run Security (MCP)",
+        "category": "CodeGuard"
+      },
+      {
+        "command": "codeguard.runCategory.analysis",
+        "title": "CodeGuard: Run Analysis (MCP)",
+        "category": "CodeGuard"
+      },
+      {
+        "command": "codeguard.runCategory.dependencies",
+        "title": "CodeGuard: Run Dependencies (MCP)",
+        "category": "CodeGuard"
       }
     ],
     "views": {
@@ -280,6 +305,47 @@
     "configuration": {
       "title": "CodeGuard Pro",
       "properties": {
+        "codeguard.category.linting.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Linting & Formatting ('*' = all discovered)."
+        },
+        "codeguard.category.testing.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Testing."
+        },
+        "codeguard.category.security.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Security."
+        },
+        "codeguard.category.analysis.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Analysis (complexity, duplication, structure)."
+        },
+        "codeguard.category.dependencies.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Dependencies (audit/outdated/advisor)."
+        },
+        "codeguard.execution.preferMCP": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prefer MCP providers; fall back to local tools when unavailable."
+        },
+        "codeguard.ai.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use AI to auto-fix safe issues after tool runs."
+        },
+        "codeguard.ai.mode": {
+          "type": "string",
+          "enum": ["safe-only", "suggest", "off"],
+          "default": "safe-only",
+          "description": "AI behavior: apply only safe fixes, suggest changes, or disable."
+        },
         "quality-hub.enableStatusBar": {
           "type": "boolean",
           "default": true,
