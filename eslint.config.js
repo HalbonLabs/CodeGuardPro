@@ -160,8 +160,12 @@ module.exports = [
       'node_modules/**',
       '**/*.d.ts',
       '*.vsix',
-      'tests/extension-typescript.mocha.test.ts',
-      'tests/extension-typescript.vitest.test.ts'
+      'cypress/**',
+      'reports/**',
+      'mocha.setup.js',
+      'vitest.setup.ts',
+      'tests/**/*.cy.ts',
+      'tests/**/*.spec.ts'
     ]
   }
 ]

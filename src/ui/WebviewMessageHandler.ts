@@ -14,11 +14,15 @@ export class WebviewMessageHandler {
   ) {}
 
   handleMessage(data: WebviewMessage): void {
+    console.log('WebviewMessageHandler received message:', data);
+    
     switch (data.command) {
       case "runTool":
+        console.log('Handling runTool command');
         this.handleRunTool(data);
         break;
       case "runToolWithAI":
+        console.log('Handling runToolWithAI command');
         this.handleRunToolWithAI(data);
         break;
       case "refresh":
@@ -38,12 +42,19 @@ export class WebviewMessageHandler {
   }
 
   private handleRunToolWithAI(data: WebviewMessage): void {
-    if (data.toolName) {
-      // Don't update last run time - we're only sending a prompt to chat, not running the tool
+    console.log('handleRunToolWithAI called with data:', data);
+    
+    if (data.toolId && data.toolName) {
+      console.log('Opening Copilot Chat with prompt for:', data.toolName);
+      this.updateToolLastRunTime(data.toolId);
       const prompt = this.generateAIPrompt(data.toolName);
+      console.log('Generated prompt:', prompt);
+      
       vscode.commands.executeCommand("workbench.action.chat.open", {
         query: prompt,
       });
+    } else {
+      console.log('Missing toolId or toolName in AI request');
     }
   }
 
@@ -56,14 +67,37 @@ export class WebviewMessageHandler {
   }
 
   private generateAIPrompt(toolName: string): string {
-    return `I need your help to run ${toolName} analysis on this project and apply any necessary fixes.
+    const baseMessage = `I need your help to run ${toolName} analysis on this project. ` +     
+      `IMPORTANT: Do not execute any VS Code commands or extensions - only run terminal/command line tools.`;
+    const steps = `
 
-Please:
-1. **Run ${toolName}**: Execute the appropriate ${toolName} command for this project
-2. **Monitor the output**: Review all results, warnings, errors, and recommendations  
-3. **Apply fixes**: Automatically fix any issues that can be resolved (use --fix flags where available)
-4. **Report results**: Summarize what was found and what fixes were applied
+Please follow these steps:
 
-Please execute the ${toolName} analysis yourself and take action on the results. Thanks!`;
+1. **Install Dependencies**: First check if ${toolName} is installed, and if not, ` +
+      `install any required packages (npm/npx/global installation as needed)
+
+2. **Execute Terminal Command**: Run the ${toolName} analysis using appropriate ` +
+      `terminal commands (NOT VS Code commands)
+
+3. **Monitor Output**: Carefully review all output, warnings, errors, and recommendations      
+
+4. **Apply Fixes**: After the analysis completes, immediately:
+   - Fix any auto-fixable issues (using --fix flags where available)
+   - Apply recommended security patches
+   - Update any outdated dependencies if suggested
+   - Create or update configuration files if needed
+   - Address any critical or high-severity issues found
+
+5. **Summary**: Provide a clear summary of:
+   - What issues were found
+   - What fixes were applied automatically
+   - Any remaining issues that need manual attention
+   - Next recommended actions
+
+Please execute the appropriate terminal commands only and take immediate action on the results.
+
+Don't just report issues - fix them where possible!`;
+
+    return baseMessage + steps;
   }
 }

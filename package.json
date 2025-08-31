@@ -2,7 +2,7 @@
   "name": "codeguard-pro",
   "displayName": "CodeGuard Pro",
   "description": "Professional code quality suite with 29 integrated tools: ESLint, Biome, Playwright, security scanning, complexity analysis, and API integrations for comprehensive project analysis",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "HalbonLabs",
   "icon": "icon.png",
   "author": {
