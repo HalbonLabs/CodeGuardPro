@@ -135,7 +135,6 @@ module.exports = [
       'node_modules/**', 
       '**/*.d.ts',
       '*.vsix',
-      'src/ui/QualityHubSidebarProvider-fixed.ts',
       'tests/extension-typescript.mocha.test.ts',
       'tests/extension-typescript.vitest.test.ts'
     ],
