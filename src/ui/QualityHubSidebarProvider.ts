@@ -13,9 +13,11 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
 
   public resolveWebviewView(
     webviewView: vscode.WebviewView,
-    context: vscode.WebviewViewResolveContext,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _context: vscode.WebviewViewResolveContext,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _token: vscode.CancellationToken,
-  ) {
+  ): void {
     this._view = webviewView;
 
     webviewView.webview.options = {
@@ -31,17 +33,39 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
           this.updateToolLastRunTime(data.toolId);
           vscode.commands.executeCommand(data.toolCommand);
           break;
-        case 'runToolWithAI':
+        case 'runToolWithAI': {
           this.updateToolLastRunTime(data.toolId);
-          // Send prompt to GitHub Copilot Chat instead of running directly
-          const prompt = `Please run ${data.toolName} analysis on this project using the command: ${data.toolCommand}
+          // Send comprehensive prompt to GitHub Copilot Chat
+          const prompt = `I need your help to run ${data.toolName} analysis on this project. IMPORTANT: Do not execute any VS Code commands or extensions - only run terminal/command line tools.
 
-This will help analyze the code quality, security, and identify any issues that need attention. Please execute the command in the terminal and explain the results.`;
+Please follow these steps:
+
+1. **Install Dependencies**: First check if ${data.toolName} is installed, and if not, install any required packages (npm/npx/global installation as needed)
+
+2. **Execute Terminal Command**: Run the ${data.toolName} analysis using appropriate terminal commands (NOT VS Code commands)
+
+3. **Monitor Output**: Carefully review all output, warnings, errors, and recommendations
+
+4. **Apply Fixes**: After the analysis completes, immediately:
+   - Fix any auto-fixable issues (using --fix flags where available)
+   - Apply recommended security patches
+   - Update any outdated dependencies if suggested
+   - Create or update configuration files if needed
+   - Address any critical or high-severity issues found
+
+5. **Summary**: Provide a clear summary of:
+   - What issues were found
+   - What fixes were applied automatically
+   - Any remaining issues that need manual attention
+   - Next recommended actions
+
+Please execute the appropriate terminal commands only and take immediate action on the results. Don't just report issues - fix them where possible!`;
           
           vscode.commands.executeCommand('workbench.action.chat.open', {
             query: prompt
           });
           break;
+        }
         case 'refresh':
           webviewView.webview.html = this.getWebviewContent();
           break;

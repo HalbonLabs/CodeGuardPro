@@ -53,3 +53,7 @@ Thumbs.db
 test-results/
 test-reports/
 junit.xml
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md

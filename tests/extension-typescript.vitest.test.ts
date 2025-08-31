@@ -3,6 +3,9 @@ import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest'
 import fs from 'fs'
 import path from 'path'
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
+
 describe('Quality Hub Extension - TypeScript Vitest Tests', () => {
   const projectRoot = path.resolve(__dirname, '..')
   
@@ -183,11 +186,11 @@ describe('Quality Hub Extension - TypeScript Vitest Tests', () => {
       subscriptions: any[]
       workspaceState: {
         get: (key: string) => any
-        update: (key: string, value: any) => Thenable<void>
+        update: (key: string, value: any) => Promise<void>
       }
       globalState: {
         get: (key: string) => any
-        update: (key: string, value: any) => Thenable<void>
+        update: (key: string, value: any) => Promise<void>
       }
       extensionPath: string
       extensionUri: { fsPath: string }

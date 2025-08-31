@@ -60,6 +60,7 @@ module.exports = [
       'no-unused-vars': 'off', // Disabled in favor of @typescript-eslint/no-unused-vars
       'prefer-const': 'error',
       'no-var': 'error',
+      'no-case-declarations': 'error',
     },
   },
   {
@@ -67,6 +68,21 @@ module.exports = [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        Buffer: 'readonly',
+        process: 'readonly',
+        require: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        global: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+      },
     },
     rules: {
       'no-unused-vars': 'error',
@@ -76,7 +92,52 @@ module.exports = [
       'no-var': 'error',
     },
   },
+  // Test files configuration
   {
-    ignores: ['out/**', 'node_modules/**', '**/*.d.ts'],
+    files: ['tests/**/*.js', 'tests/**/*.ts', '**/*.test.js', '**/*.test.ts'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        jest: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        process: 'readonly',
+        console: 'readonly',
+        Buffer: 'readonly',
+        global: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+      },
+    },
+    rules: {
+      'no-console': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      'security/detect-object-injection': 'off',
+      'security/detect-non-literal-fs-filename': 'off',
+      'sonarjs/no-duplicate-string': 'off',
+    },
+  },
+  {
+    ignores: [
+      'out/**', 
+      'node_modules/**', 
+      '**/*.d.ts',
+      '*.vsix',
+      'src/ui/QualityHubSidebarProvider-fixed.ts',
+      'tests/extension-typescript.mocha.test.ts',
+      'tests/extension-typescript.vitest.test.ts'
+    ],
   },
 ];
