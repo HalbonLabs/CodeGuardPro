@@ -1,0 +1,541 @@
+{
+  "name": "codeguard-pro",
+  "displayName": "CodeGuard Pro",
+  "description": "Professional code quality, security, and testing suite with ESLint, Biome, Playwright, security scanning, and comprehensive analysis tools",
+  "version": "1.0.0",
+  "publisher": "codeguard-pro",
+  "author": {
+    "name": "CodeGuard Pro Team",
+    "email": "contact@codeguard.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codeguard-pro/vscode-codeguard-pro"
+  },
+  "homepage": "https://github.com/codeguard-pro/vscode-codeguard-pro#readme",
+  "bugs": {
+    "url": "https://github.com/codeguard-pro/vscode-codeguard-pro/issues"
+  },
+  "license": "MIT",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Linters",
+    "Testing",
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "code quality",
+    "linting",
+    "security",
+    "testing",
+    "biome",
+    "eslint",
+    "playwright",
+    "cypress",
+    "code analysis",
+    "security scan",
+    "typescript",
+    "javascript"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/simple-extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "quality-hub.showSimple",
+        "title": "Open CodeGuard Pro (Sidebar)",
+        "category": "CodeGuard Pro",
+        "icon": "$(dashboard)"
+      },
+      {
+        "command": "quality-hub.openSettings",
+        "title": "Open Settings",
+        "category": "CodeGuard Pro",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "quality-hub.test",
+        "title": "Test Extension",
+        "category": "CodeGuard Pro",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "quality-hub.eslintCode",
+        "title": "Run ESLint",
+        "category": "CodeGuard Pro",
+        "icon": "$(check)"
+      },
+      {
+        "command": "quality-hub.biomeCode",
+        "title": "Run Biome",
+        "category": "CodeGuard Pro",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "quality-hub.typescriptEslint",
+        "title": "Run TypeScript ESLint",
+        "category": "CodeGuard Pro",
+        "icon": "$(symbol-class)"
+      },
+      {
+        "command": "quality-hub.prettier",
+        "title": "Run Prettier",
+        "category": "CodeGuard Pro",
+        "icon": "$(symbol-color)"
+      },
+      {
+        "command": "quality-hub.standardjs",
+        "title": "Run StandardJS",
+        "category": "CodeGuard Pro",
+        "icon": "$(star)"
+      },
+      {
+        "command": "quality-hub.npmAudit",
+        "title": "Run npm audit",
+        "category": "CodeGuard Pro",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "quality-hub.eslintSecurity",
+        "title": "Run ESLint Security",
+        "category": "CodeGuard Pro",
+        "icon": "$(shield-check)"
+      },
+      {
+        "command": "quality-hub.retireJs",
+        "title": "Run Retire.js",
+        "category": "CodeGuard Pro",
+        "icon": "$(lock)"
+      },
+      {
+        "command": "quality-hub.auditCi",
+        "title": "Run audit-ci",
+        "category": "CodeGuard Pro",
+        "icon": "$(verified)"
+      },
+      {
+        "command": "quality-hub.playwright",
+        "title": "Run Playwright Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "quality-hub.cypress",
+        "title": "Run Cypress Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(browser)"
+      },
+      {
+        "command": "quality-hub.jest",
+        "title": "Run Jest Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "quality-hub.mocha",
+        "title": "Run Mocha Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(test-view-icon)"
+      },
+      {
+        "command": "quality-hub.vitest",
+        "title": "Run Vitest Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "quality-hub.webdriverio",
+        "title": "Run WebdriverIO Tests",
+        "category": "CodeGuard Pro",
+        "icon": "$(device-mobile)"
+      },
+      {
+        "command": "quality-hub.sonarJs",
+        "title": "Run SonarJS Analysis",
+        "category": "CodeGuard Pro",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "quality-hub.sonarQubeApi",
+        "title": "Connect to SonarQube Server",
+        "category": "CodeGuard Pro",
+        "icon": "$(cloud)"
+      },
+      {
+        "command": "quality-hub.codacyApi",
+        "title": "Connect to Codacy Platform",
+        "category": "CodeGuard Pro",
+        "icon": "$(shield-check)"
+      },
+      {
+        "command": "quality-hub.codeClimateApi",
+        "title": "Connect to CodeClimate",
+        "category": "CodeGuard Pro",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "quality-hub.snykCodeApi",
+        "title": "Connect to Snyk Code",
+        "category": "CodeGuard Pro",
+        "icon": "$(bug)"
+      },
+      {
+        "command": "quality-hub.codeFactorApi",
+        "title": "Connect to CodeFactor",
+        "category": "CodeGuard Pro",
+        "icon": "$(telescope)"
+      },
+      {
+        "command": "quality-hub.plato",
+        "title": "Run Cyclomatic Complexity",
+        "category": "CodeGuard Pro",
+        "icon": "$(chart)"
+      },
+      {
+        "command": "quality-hub.eslintComplexity",
+        "title": "Run ESLint Complexity",
+        "category": "CodeGuard Pro",
+        "icon": "$(graph-line)"
+      },
+      {
+        "command": "quality-hub.madgeDeps",
+        "title": "Analyze Dependencies with Madge",
+        "category": "CodeGuard Pro",
+        "icon": "$(package)"
+      },
+      {
+        "command": "quality-hub.depcheck",
+        "title": "Run Depcheck",
+        "category": "CodeGuard Pro",
+        "icon": "$(package-dependencies)"
+      },
+      {
+        "command": "quality-hub.owaspCheck",
+        "title": "Run OWASP Dependency Check",
+        "category": "CodeGuard Pro",
+        "icon": "$(security)"
+      },
+      {
+        "command": "quality-hub.typeCheck",
+        "title": "Type Check",
+        "category": "CodeGuard Pro",
+        "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "quality-hub.generateReport",
+        "title": "Generate Quality Report",
+        "category": "CodeGuard Pro",
+        "icon": "$(file-text)"
+      },
+      {
+        "command": "quality-hub.duplicateCode",
+        "title": "Find Duplicate Code",
+        "category": "CodeGuard Pro",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "quality-hub.codeStructure",
+        "title": "Analyze Code Structure",
+        "category": "CodeGuard Pro",
+        "icon": "$(symbol-structure)"
+      },
+      {
+        "command": "quality-hub.updateDependencies",
+        "title": "Check Dependency Updates",
+        "category": "CodeGuard Pro",
+        "icon": "$(arrow-up)"
+      }
+    ],
+    "views": {
+      "quality-hub-webview": [
+        {
+          "id": "quality-hub.sidebarView",
+          "name": "",
+          "type": "webview",
+          "when": "true",
+          "icon": "$(shield)"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "quality-hub-webview",
+          "title": "CodeGuard Pro",
+          "icon": "$(shield)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CodeGuard Pro",
+      "properties": {
+        "quality-hub.enableStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeGuard Pro status in status bar"
+        },
+        "quality-hub.autoLintOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically lint and fix code on save (uses Biome)"
+        },
+        "quality-hub.testFramework": {
+          "type": "string",
+          "enum": [
+            "playwright",
+            "cypress",
+            "selenium",
+            "puppeteer"
+          ],
+          "default": "playwright",
+          "description": "Preferred E2E testing framework"
+        },
+        "quality-hub.duplicateCodeThreshold": {
+          "type": "number",
+          "default": 100,
+          "description": "Minimum token threshold for duplicate code detection"
+        },
+        "quality-hub.complexityThreshold": {
+          "type": "number",
+          "default": 15,
+          "description": "Maximum cognitive complexity threshold"
+        },
+        "quality-hub.enableSonarAnalysis": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable SonarJS code quality analysis"
+        },
+        "quality-hub.securityLevel": {
+          "type": "string",
+          "enum": [
+            "low",
+            "moderate",
+            "high",
+            "critical"
+          ],
+          "default": "moderate",
+          "description": "Security vulnerability level threshold"
+        },
+        "quality-hub.sonarqube-api.server-url": {
+          "type": "string",
+          "default": "",
+          "description": "SonarQube Server URL (e.g., https://sonarcloud.io)"
+        },
+        "quality-hub.sonarqube-api.api-token": {
+          "type": "string",
+          "default": "",
+          "description": "SonarQube API Token"
+        },
+        "quality-hub.codacy-api.api-token": {
+          "type": "string",
+          "default": "",
+          "description": "Codacy API Token"
+        },
+        "quality-hub.codacy-api.project-id": {
+          "type": "string",
+          "default": "",
+          "description": "Codacy Project ID"
+        },
+        "quality-hub.codeclimate-api.api-token": {
+          "type": "string",
+          "default": "",
+          "description": "CodeClimate API Token"
+        },
+        "quality-hub.snyk-code-api.api-token": {
+          "type": "string",
+          "default": "",
+          "description": "Snyk API Token"
+        },
+        "quality-hub.codefactor-api.api-token": {
+          "type": "string",
+          "default": "",
+          "description": "CodeFactor API Token"
+        },
+        "quality-hub.codefactor-api.repository-url": {
+          "type": "string",
+          "default": "",
+          "description": "CodeFactor Repository URL"
+        },
+        "quality-hub.disabledTools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "List of disabled tool IDs"
+        },
+        "quality-hub.autoExpandCategories": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-expand all categories on startup"
+        },
+        "quality-hub.showToolDescriptions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show detailed tool descriptions in list view"
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "quality-hub.submenu",
+          "group": "navigation"
+        }
+      ],
+      "quality-hub.submenu": [
+        {
+          "command": "quality-hub.eslintCode",
+          "group": "1_linting"
+        },
+        {
+          "command": "quality-hub.biomeCode",
+          "group": "1_linting"
+        },
+        {
+          "command": "quality-hub.typescriptEslint",
+          "group": "1_linting"
+        },
+        {
+          "command": "quality-hub.prettier",
+          "group": "1_linting"
+        },
+        {
+          "command": "quality-hub.npmAudit",
+          "group": "2_security"
+        },
+        {
+          "command": "quality-hub.eslintSecurity",
+          "group": "2_security"
+        },
+        {
+          "command": "quality-hub.retireJs",
+          "group": "2_security"
+        },
+        {
+          "command": "quality-hub.playwright",
+          "group": "3_testing"
+        },
+        {
+          "command": "quality-hub.cypress",
+          "group": "3_testing"
+        },
+        {
+          "command": "quality-hub.jest",
+          "group": "3_testing"
+        },
+        {
+          "command": "quality-hub.sonarJs",
+          "group": "4_analysis"
+        },
+        {
+          "command": "quality-hub.plato",
+          "group": "4_analysis"
+        },
+        {
+          "command": "quality-hub.duplicateCode",
+          "group": "4_analysis"
+        },
+        {
+          "command": "quality-hub.madgeDeps",
+          "group": "5_dependencies"
+        },
+        {
+          "command": "quality-hub.depcheck",
+          "group": "5_dependencies"
+        },
+        {
+          "command": "quality-hub.updateDependencies",
+          "group": "5_dependencies"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "quality-hub.submenu",
+        "label": "CodeGuard Pro"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "npx tsc -p ./",
+    "watch": "npx tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "npx eslint src --ext ts",
+    "format": "npx prettier --write src/**/*.ts",
+    "audit": "npx audit-ci --config audit-ci.json",
+    "test": "npx vscode-test",
+    "test:jest": "npx jest",
+    "test:jest:watch": "npx jest --watch",
+    "test:jest:coverage": "npx jest --coverage",
+    "test:mocha": "npx mocha",
+    "test:mocha:watch": "npx mocha --watch",
+    "test:mocha:reporter": "npx mocha --reporter json",
+    "test:mocha:coverage": "npx c8 --reporter=text --reporter=html --reporter=lcov npx mocha",
+    "test:vitest": "npx vitest run",
+    "test:vitest:watch": "npx vitest",
+    "test:vitest:ui": "npx vitest --ui",
+    "test:vitest:coverage": "npx vitest run --coverage",
+    "test:wdio": "npx wdio run",
+    "test:wdio:headless": "npx wdio run --headless",
+    "test:wdio:watch": "npx wdio run --watch"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
+    "@jest/globals": "^30.1.1",
+    "@types/chai": "^5.2.2",
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.3.0",
+    "@types/vscode": "^1.103.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "@wdio/cli": "^9.19.2",
+    "@wdio/junit-reporter": "^9.19.2",
+    "@wdio/local-runner": "^9.19.2",
+    "@wdio/mocha-framework": "^9.19.2",
+    "@wdio/spec-reporter": "^9.19.2",
+    "@wdio/types": "^9.19.2",
+    "audit-ci": "^7.1.0",
+    "c8": "^10.1.3",
+    "chai": "^6.0.1",
+    "chromedriver": "^139.0.3",
+    "cypress": "^15.0.0",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.34.0",
+    "eslint-plugin-security": "^3.0.1",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "expect-webdriverio": "^5.4.2",
+    "jest": "^30.1.1",
+    "jscpd": "^4.0.5",
+    "madge": "^8.0.0",
+    "mocha": "^11.7.1",
+    "npm-check-updates": "^18.0.3",
+    "nyc": "^17.1.0",
+    "playwright": "^1.55.0",
+    "prettier": "^3.6.2",
+    "retire": "^5.3.0",
+    "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "webdriverio": "^9.19.2"
+  },
+  "dependencies": {
+    "axios": "^1.11.0"
+  }
+}

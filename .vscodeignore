@@ -1,0 +1,67 @@
+.vscode/**
+.vscode-test/**
+out/test/**
+src/**
+.gitignore
+.yarnrc
+vsc-extension-quickstart.md
+**/tsconfig.json
+**/.eslintrc.json
+**/*.map
+**/*.ts
+
+# Exclude node_modules - this is the biggest issue!
+node_modules/**
+**/node_modules/**
+
+# Exclude development files
+.github/**
+.git/**
+.c8_output/**
+coverage/**
+test/**
+tests/**
+**/*.test.js
+**/*.test.ts
+
+# Exclude config files not needed at runtime
+.eslintrc*
+.gitignore
+.gitattributes
+tsconfig.json
+webpack.config.js
+rollup.config.js
+jest.config.js
+karma.conf.js
+
+# Exclude documentation that's not essential
+CONTRIBUTING.md
+MARKETPLACE.md
+CHANGELOG.md
+DEPENDENCY_UPDATE_PLAN.md
+SECURITY_AUDIT_REPORT.md
+UI_STATE_MANAGEMENT_FIX.md
+docs/**
+
+# Exclude logs and temporary files
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/.DS_Store
+**/Thumbs.db
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Exclude build artifacts
+dist/**
+build/**
+lib/**
+*.tsbuildinfo
+
+# Exclude package files
+*.vsix
+*.tgz

@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: compile",
+      "type": "shell",
+      "command": "C:\\Program Files\\nodejs\\npm.cmd",
+      "args": ["run", "compile"],
+      "isBackground": false,
+      "problemMatcher": ["$tsc"],
+      "group": "build"
+    }
+  ]
+}

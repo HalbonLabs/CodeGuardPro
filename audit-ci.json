@@ -1,0 +1,19 @@
+{
+  "moderate": true,
+  "high": true,
+  "critical": true,
+  "low": false,
+  "report": {
+    "summary": true
+  },
+  "output-format": "text",
+  "report-type": "full",
+  "show-found": true,
+  "show-not-found": false,
+  "skip-dev": false,
+  "pass-enoaudit": false,
+  "retry-count": 5,
+  "allowlist": [],
+  "registry": "https://registry.npmjs.org/",
+  "package-manager": "npm"
+}
