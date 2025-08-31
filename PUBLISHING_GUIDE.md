@@ -4,17 +4,18 @@
 ✅ **Repository**: https://github.com/HalbonLabs/CodeGuardPro.git  
 ✅ **Code Committed**: All 31 files pushed to GitHub  
 ✅ **Extension Packaged**: `codeguard-pro-1.0.0.vsix` (23.3KB)  
-✅ **Publisher**: `codeguard-pro`  
+✅ **Publisher**: `HalbonLabs`  
 
 ## 🚀 VS Code Marketplace Publishing
 
 ### Step 1: Create Publisher Account
 1. Go to: https://marketplace.visualstudio.com/manage/publishers/
 2. Sign in with Microsoft account
-3. Create new publisher with ID: `codeguard-pro`
+3. Create new publisher with ID: `halbon-labs`
 4. Fill publisher details:
-   - **Display Name**: CodeGuard Pro
-   - **Description**: Professional code quality and security tools
+   - **Publisher ID**: halbon-labs
+   - **Display Name**: Halbon Labs
+   - **Description**: Professional development tools and extensions
 
 ### Step 2: Generate Personal Access Token
 1. Go to: https://dev.azure.com/
@@ -26,7 +27,7 @@
 ### Step 3: Publish Extension
 ```bash
 # Login with your token
-npx vsce login codeguard-pro
+npx vsce login HalbonLabs
 
 # Publish to marketplace
 npx vsce publish

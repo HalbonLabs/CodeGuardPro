@@ -3,7 +3,7 @@
   "displayName": "CodeGuard Pro",
   "description": "Professional code quality, security, and testing suite with ESLint, Biome, Playwright, security scanning, and comprehensive analysis tools",
   "version": "1.0.0",
-  "publisher": "codeguard-pro",
+  "publisher": "HalbonLabs",
   "author": {
     "name": "CodeGuard Pro Team",
     "email": "contact@codeguard.dev"
