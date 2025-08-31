@@ -56,14 +56,14 @@ export class WebviewMessageHandler {
   }
 
   private generateAIPrompt(toolName: string): string {
-    return `Hi! I'd like some help with ${toolName} for my project. 
+    return `I need your help to run ${toolName} analysis on this project and apply any necessary fixes.
 
-Could you help me understand:
-- How to properly set up and configure ${toolName} for this codebase
-- What are the best practices and recommended settings
-- How to run ${toolName} analysis and interpret the results
-- What common issues ${toolName} can detect and how to fix them
+Please:
+1. **Run ${toolName}**: Execute the appropriate ${toolName} command for this project
+2. **Monitor the output**: Review all results, warnings, errors, and recommendations  
+3. **Apply fixes**: Automatically fix any issues that can be resolved (use --fix flags where available)
+4. **Report results**: Summarize what was found and what fixes were applied
 
-I'm looking for guidance and advice rather than having commands executed automatically. Thanks!`;
+Please execute the ${toolName} analysis yourself and take action on the results. Thanks!`;
   }
 }
