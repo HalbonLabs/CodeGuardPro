@@ -54,6 +54,20 @@ test-results/
 test-reports/
 junit.xml
 
+# Large binary dependencies (downloaded as needed)
+dependency-check-bin/
+*.jar
+
+# Analysis reports (can be regenerated)
+reports/
+playwright-report/
+*.mp4
+
+# OWASP and security analysis files
+owasp-*.json
+dependency-check-sbom.json
+sbom-lockfile.json
+retire-report.json
 
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md

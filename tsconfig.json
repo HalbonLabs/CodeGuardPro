@@ -11,14 +11,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "types": ["node", "vscode"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "out",
-    "cypress"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "out", "cypress"]
 }

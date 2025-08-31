@@ -15,5 +15,6 @@
   "retry-count": 5,
   "allowlist": [],
   "registry": "https://registry.npmjs.org/",
-  "package-manager": "npm"
+  "package-manager": "npm",
+  "extra-args": ["--audit-level", "moderate"]
 }

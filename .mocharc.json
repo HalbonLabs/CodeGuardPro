@@ -1,0 +1,35 @@
+{
+  "require": ["ts-node/register", "./mocha.setup.js"],
+  "extensions": ["ts", "tsx", "js", "jsx"],
+  "spec": [
+    "tests/**/*.mocha.test.ts",
+    "tests/**/*.mocha.test.js",
+    "src/**/*.test.ts",
+    "src/**/*.test.js"
+  ],
+  "timeout": 30000,
+  "recursive": true,
+  "reporter": "spec",
+  "exit": true,
+  "slow": 500,
+  "grep": "",
+  "bail": false,
+  "fullTrace": true,
+  "checkLeaks": false,
+  "globals": ["expect", "should"],
+  "retries": 1,
+  "watch": false,
+  "watchFiles": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "watchIgnore": [
+    "node_modules/**/*",
+    "out/**/*",
+    "*.log"
+  ],
+  "env": {
+    "NODE_ENV": "test",
+    "TS_NODE_PROJECT": "tsconfig.json"
+  }
+}

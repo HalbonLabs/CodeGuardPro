@@ -1,0 +1,25 @@
+{
+  "baseDir": "./src",
+  "includeNpm": false,
+  "fileExtensions": ["ts", "js"],
+  "detectiveOptions": {
+    "ts": {
+      "skipTypeImports": true
+    },
+    "tsx": {
+      "skipTypeImports": true
+    }
+  },
+  "excludeRegExp": [
+    "node_modules",
+    "\\.test\\.",
+    "\\.spec\\.",
+    "\\.d\\.ts$",
+    "dist/",
+    "out/",
+    "reports/"
+  ],
+  "config": {
+    "requireConfig": false
+  }
+}

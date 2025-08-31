@@ -1,0 +1,41 @@
+{
+  "ignores": [
+    "typescript",
+    "@types/vscode",
+    "@types/node",
+    "@types/mocha",
+    "@types/chai",
+    "@types/jest",
+    "vscode",
+    "mocha",
+    "chai",
+    "jest",
+    "vitest",
+    "cypress",
+    "playwright",
+    "eslint",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "@typescript-eslint/eslint-config-recommended",
+    "@eslint/js",
+    "vsce",
+    "webpack",
+    "@vscode/test-cli",
+    "npm-check-updates",
+    "concurrently"
+  ],
+  "ignore-dirs": [
+    "out",
+    "node_modules",
+    "dist",
+    "build",
+    ".vscode",
+    "coverage",
+    "test-results",
+    "reports",
+    "dependency-check-bin",
+    "cypress",
+    "playwright-report"
+  ],
+  "skip-missing": false
+}
