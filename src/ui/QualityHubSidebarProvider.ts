@@ -52,7 +52,7 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
   }
 
   private refreshWebview(): void {
-    if (this._view) {
+    if (this._view && this._view.webview) {
       this._view.webview.html = this.getWebviewContent();
     }
   }

@@ -207,38 +207,58 @@ export class HtmlTemplateGenerator {
         const vscode = acquireVsCodeApi();
 
         function toggleCategory(header) {
-            const category = header.parentElement;
-            category.classList.toggle('expanded');
+            try {
+                const category = header.parentElement;
+                category.classList.toggle('expanded');
+            } catch (error) {
+                console.error('Error toggling category:', error);
+            }
         }
 
         function runTool(command, toolName, toolId) {
-            vscode.postMessage({
-                command: 'runTool',
-                toolCommand: command,
-                toolName: toolName,
-                toolId: toolId
-            });
+            try {
+                vscode.postMessage({
+                    command: 'runTool',
+                    toolCommand: command,
+                    toolName: toolName,
+                    toolId: toolId
+                });
+            } catch (error) {
+                console.error('Error running tool:', error);
+            }
         }
 
         function runWithAI(command, toolName, toolId) {
-            vscode.postMessage({
-                command: 'runToolWithAI',
-                toolCommand: command,
-                toolName: toolName,
-                toolId: toolId
-            });
+            try {
+                vscode.postMessage({
+                    command: 'runToolWithAI',
+                    toolCommand: command,
+                    toolName: toolName,
+                    toolId: toolId
+                });
+            } catch (error) {
+                console.error('Error running tool with AI:', error);
+            }
         }
 
         function refresh() {
-            vscode.postMessage({
-                command: 'refresh'
-            });
+            try {
+                vscode.postMessage({
+                    command: 'refresh'
+                });
+            } catch (error) {
+                console.error('Error refreshing:', error);
+            }
         }
 
         function openSettings() {
-            vscode.postMessage({
-                command: 'openSettings'
-            });
+            try {
+                vscode.postMessage({
+                    command: 'openSettings'
+                });
+            } catch (error) {
+                console.error('Error opening settings:', error);
+            }
         }
     </script>
 </body>
