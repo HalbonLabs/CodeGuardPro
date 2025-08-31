@@ -33,7 +33,14 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
           break;
         case 'runToolWithAI':
           this.updateToolLastRunTime(data.toolId);
-          vscode.commands.executeCommand(data.toolCommand);
+          // Send prompt to GitHub Copilot Chat instead of running directly
+          const prompt = `Please run ${data.toolName} analysis on this project using the command: ${data.toolCommand}
+
+This will help analyze the code quality, security, and identify any issues that need attention. Please execute the command in the terminal and explain the results.`;
+          
+          vscode.commands.executeCommand('workbench.action.chat.open', {
+            query: prompt
+          });
           break;
         case 'refresh':
           webviewView.webview.html = this.getWebviewContent();
