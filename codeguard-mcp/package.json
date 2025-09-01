@@ -1,0 +1,232 @@
+{
+  "name": "codeguard-mcp",
+  "displayName": "MCP Task Runner",
+  "description": "Model Context Protocol (MCP) task runner for code quality tools - Experimental standalone version",
+  "version": "0.1.0",
+  "publisher": "HalbonLabs",
+  "icon": "icon.png",
+  "author": {
+    "name": "CodeGuard Pro Team",
+    "email": "contact@codeguard.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codeguard-pro/vscode-codeguard-pro"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Linters",
+    "Testing",
+    "Other"
+  ],
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "code quality",
+    "ai fixes",
+    "task runner",
+    "linting",
+    "testing",
+    "security"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeguard-mcp.runLinting",
+        "title": "Run Linting (MCP)",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runTesting",
+        "title": "Run Testing (MCP)",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runSecurity",
+        "title": "Run Security (MCP)",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runAnalysis",
+        "title": "Run Analysis (MCP)",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runDependencies",
+        "title": "Run Dependencies (MCP)",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.undoLastFix",
+        "title": "Undo Last Fix",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.showResults",
+        "title": "Show Results",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runAllWithAI",
+        "title": "Run All Categories with AI",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.refreshTree",
+        "title": "Refresh Providers",
+        "category": "MCP Task Runner"
+      },
+      {
+        "command": "codeguard-mcp.runProvider",
+        "title": "Run Provider",
+        "category": "MCP Task Runner"
+      }
+    ],
+    "views": {
+      "quality-hub-webview": [
+        {
+          "id": "codeguard.mcpProviders",
+          "name": "MCP Providers",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "codeguard.mcpProviders",
+        "contents": "No MCP servers configured.\n[Configure MCP Servers](command:workbench.action.openSettings?%5B%22codeguard-mcp.servers%22%5D)\nOr use local tools as fallback."
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "codeguard-mcp.runAllWithAI",
+          "when": "view == codeguard.mcpProviders",
+          "group": "navigation@1"
+        },
+        {
+          "command": "codeguard-mcp.refreshTree",
+          "when": "view == codeguard.mcpProviders",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "codeguard-mcp.runProvider",
+          "when": "view == codeguard.mcpProviders && viewItem == provider",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MCP Task Runner",
+      "properties": {
+        "codeguard-mcp.servers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Display name for the MCP server"
+              },
+              "url": {
+                "type": "string",
+                "description": "Base URL for the MCP server (e.g., http://localhost:3000)"
+              },
+              "token": {
+                "type": "string",
+                "description": "Optional authentication token for the MCP server"
+              }
+            },
+            "required": ["name", "url"],
+            "additionalProperties": false
+          },
+          "default": [],
+          "description": "List of Model Context Protocol (MCP) servers for code quality tools. Each server should provide a /capabilities endpoint or support MCP discovery RPC.",
+          "examples": [
+            [
+              {
+                "name": "ESLint MCP Server",
+                "url": "http://localhost:3001",
+                "token": "optional-auth-token"
+              },
+              {
+                "name": "Security Scanner",
+                "url": "https://security.example.com/mcp"
+              }
+            ]
+          ]
+        },
+        "codeguard-mcp.category.linting.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Linting & Formatting ('*' = all discovered)."
+        },
+        "codeguard-mcp.category.testing.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Testing."
+        },
+        "codeguard-mcp.category.security.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Security."
+        },
+        "codeguard-mcp.category.analysis.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Analysis (complexity, duplication, structure)."
+        },
+        "codeguard-mcp.category.dependencies.tools": {
+          "type": "array",
+          "default": ["*"],
+          "description": "MCP tool IDs to run for Dependencies (audit/outdated/advisor)."
+        },
+        "codeguard-mcp.execution.preferMCP": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prefer MCP providers; fall back to local tools when unavailable."
+        },
+        "codeguard-mcp.ai.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use AI to auto-fix safe issues after tool runs."
+        },
+        "codeguard-mcp.ai.mode": {
+          "type": "string",
+          "enum": ["safe-only", "suggest", "off"],
+          "default": "safe-only",
+          "description": "AI behavior: apply only safe fixes, suggest changes, or disable."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "npx tsc -p ./",
+    "watch": "npx tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "npx eslint src --ext ts",
+    "test": "vscode-test",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "@vscode/vsce": "^2.15.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  }
+}

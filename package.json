@@ -2,7 +2,7 @@
   "name": "codeguard-pro",
   "displayName": "CodeGuard Pro",
   "description": "Professional code quality suite with 29 integrated tools: ESLint, Biome, Playwright, security scanning, complexity analysis, and API integrations for comprehensive project analysis",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "publisher": "HalbonLabs",
   "icon": "icon.png",
   "author": {
@@ -280,6 +280,11 @@
         "command": "codeguard.runCategory.dependencies",
         "title": "CodeGuard: Run Dependencies (MCP)",
         "category": "CodeGuard"
+      },
+      {
+        "command": "codeguard.showResults",
+        "title": "CodeGuard: Show Results",
+        "category": "CodeGuard"
       }
     ],
     "views": {
@@ -290,6 +295,12 @@
           "type": "webview",
           "when": "true",
           "icon": "$(shield)"
+        },
+        {
+          "id": "codeguard.resultsView",
+          "name": "Results",
+          "type": "webview",
+          "when": "true"
         }
       ]
     },
@@ -450,6 +461,43 @@
           "type": "boolean",
           "default": true,
           "description": "Show detailed tool descriptions in list view"
+        },
+        "codeguard.mcp.servers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Display name for the MCP server"
+              },
+              "url": {
+                "type": "string",
+                "description": "Base URL for the MCP server (e.g., http://localhost:3000)"
+              },
+              "token": {
+                "type": "string",
+                "description": "Optional authentication token for the MCP server"
+              }
+            },
+            "required": ["name", "url"],
+            "additionalProperties": false
+          },
+          "default": [],
+          "description": "List of Model Context Protocol (MCP) servers for code quality tools. Each server should provide a /capabilities endpoint or support MCP discovery RPC.",
+          "examples": [
+            [
+              {
+                "name": "ESLint MCP Server",
+                "url": "http://localhost:3001",
+                "token": "optional-auth-token"
+              },
+              {
+                "name": "Security Scanner",
+                "url": "https://security.example.com/mcp"
+              }
+            ]
+          ]
         }
       }
     },

@@ -37,7 +37,8 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
       localResourceRoots: [this._extensionUri],
     };
 
-    webviewView.webview.html = this.getWebviewContent();
+    const nonce = this.createNonce();
+    webviewView.webview.html = this.getWebviewContent(nonce, webviewView.webview.cspSource);
   }
 
   private setupMessageHandling(webviewView: vscode.WebviewView): void {
@@ -53,7 +54,8 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
 
   private refreshWebview(): void {
     if (this._view) {
-      this._view.webview.html = this.getWebviewContent();
+      const nonce = this.createNonce();
+      this._view.webview.html = this.getWebviewContent(nonce, this._view.webview.cspSource);
     }
   }
 
@@ -79,7 +81,16 @@ export class QualityHubSidebarProvider implements vscode.WebviewViewProvider {
     }
   }
 
-  private getWebviewContent(): string {
-    return this.htmlGenerator.generateWebviewHtml(this.toolLastRunTimes);
+  private getWebviewContent(nonce?: string, cspSource?: string): string {
+    return this.htmlGenerator.generateWebviewHtml(this.toolLastRunTimes, { nonce: nonce || '', cspSource: cspSource || ''});
+  }
+
+  private createNonce(): string {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let text = '';
+    for (let i = 0; i < 16; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
   }
 }

@@ -50,7 +50,7 @@ export async function discover(): Promise<McpProvider[]> {
   const providers: McpProvider[] = [];
   
   // Get MCP server configurations from VS Code settings
-  const config = vscode.workspace.getConfiguration('codeguard.mcp');
+  const config = vscode.workspace.getConfiguration('codeguard-mcp');
   const servers: McpServerConfig[] = config.get('servers', []);
   
   if (servers.length === 0) {
@@ -59,7 +59,7 @@ export async function discover(): Promise<McpProvider[]> {
       'Configure Servers'
     ).then(selection => {
       if (selection === 'Configure Servers') {
-        vscode.commands.executeCommand('workbench.action.openSettings', 'codeguard.mcp.servers');
+        vscode.commands.executeCommand('workbench.action.openSettings', 'codeguard-mcp.servers');
       }
     });
     
@@ -144,7 +144,7 @@ async function queryServerCapabilities(server: McpServerConfig): Promise<McpCapa
       timeout: 5000,
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'CodeGuard Pro VS Code Extension',
+        'User-Agent': 'CodeGuard MCP VS Code Extension',
         ...(server.token && { 'Authorization': `Bearer ${server.token}` })
       }
     };
@@ -205,8 +205,8 @@ async function tryMcpDiscoveryRpc(server: McpServerConfig): Promise<McpCapabilit
           tools: {}
         },
         clientInfo: {
-          name: 'CodeGuard Pro',
-          version: '1.0.0'
+          name: 'CodeGuard MCP',
+          version: '0.1.0'
         }
       }
     };
@@ -222,7 +222,7 @@ async function tryMcpDiscoveryRpc(server: McpServerConfig): Promise<McpCapabilit
       headers: {
         'Content-Type': 'application/json',
         'Content-Length': Buffer.byteLength(postData),
-        'User-Agent': 'CodeGuard Pro VS Code Extension',
+        'User-Agent': 'CodeGuard MCP VS Code Extension',
         ...(server.token && { 'Authorization': `Bearer ${server.token}` })
       }
     };

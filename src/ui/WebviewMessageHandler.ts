@@ -1,11 +1,12 @@
 import * as vscode from "vscode";
 
 export interface WebviewMessage {
-  command: "runTool" | "runToolWithAI" | "refresh" | "openSettings" | "runMCPCategory";
+  command: "runTool" | "runToolWithAI" | "refresh" | "openSettings" | "runMCPCategory" | "runIDECategory" | "runIDETool" | "runMCPTool";
   toolId?: string;
   toolCommand?: string;
   toolName?: string;
   category?: string;
+  quickPick?: boolean;
 }
 
 export class WebviewMessageHandler {
@@ -30,6 +31,15 @@ export class WebviewMessageHandler {
         break;
       case "runMCPCategory":
         this.handleRunMCPCategory(data);
+        break;
+      case "runIDECategory":
+        this.handleRunIDECategory(data);
+        break;
+      case "runIDETool":
+        this.handleRunIDETool(data);
+        break;
+      case "runMCPTool":
+        this.handleRunMCPTool(data);
         break;
     }
   }
@@ -61,7 +71,31 @@ export class WebviewMessageHandler {
 
   private handleRunMCPCategory(data: WebviewMessage): void {
     if (data.category) {
-      vscode.commands.executeCommand(`codeguard.runCategory.${data.category}`);
+      if (data.quickPick) {
+        vscode.commands.executeCommand(`codeguard.runCategory.${data.category}.quickPick`);
+      } else {
+        vscode.commands.executeCommand(`codeguard.runCategory.${data.category}`);
+      }
+    }
+  }
+
+  private handleRunIDECategory(data: WebviewMessage): void {
+    if (data.category) {
+      vscode.commands.executeCommand(`codeguard.runCategory.${data.category}.local`);
+    }
+  }
+
+  private handleRunIDETool(data: WebviewMessage): void {
+    if (data.toolId) {
+      this.updateToolLastRunTime(data.toolId);
+      vscode.commands.executeCommand('codeguard.runTool.local', data.toolId);
+    }
+  }
+
+  private handleRunMCPTool(data: WebviewMessage): void {
+    if (data.toolId) {
+      this.updateToolLastRunTime(data.toolId);
+      vscode.commands.executeCommand('codeguard.runTool.mcp', data.toolId, data.category);
     }
   }
 

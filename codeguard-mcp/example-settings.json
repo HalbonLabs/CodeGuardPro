@@ -1,0 +1,16 @@
+{
+  "codeguard-mcp.servers": [
+    {
+      "name": "Mock ESLint Server",
+      "url": "http://localhost:3001",
+      "token": ""
+    },
+    {
+      "name": "Mock Security Server", 
+      "url": "http://localhost:3002"
+    }
+  ],
+  "codeguard-mcp.ai.enabled": true,
+  "codeguard-mcp.ai.mode": "safe-only",
+  "codeguard-mcp.execution.preferMCP": true
+}

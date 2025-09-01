@@ -1,5 +1,5 @@
 /**
- * Results View Service
+ * Results View Service for CodeGuard MCP
  * Displays execution results in a dedicated webview panel
  */
 
@@ -7,7 +7,6 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as os from 'os';
-import { RunResult } from './dispatcher';
 
 export interface Issue {
   file: string;
@@ -22,40 +21,21 @@ export interface Issue {
   aiSuggestion?: string;
 }
 
-export interface CategorySummary {
-  label: string;
-  autoFixed: number;
-  remaining: number;
-  tools: string[];
+export interface RunResult {
+  tool: string;
+  command: string;
+  success: boolean;
+  issues: Issue[];
+  fixed: number;
+  duration?: number;
+  output?: string;
+  error?: string;
 }
 
 export interface ResultsModel {
   results: RunResult[];
   remaining: Issue[];
 }
-
-// Tool to category mapping
-const TOOL_CATEGORY_MAP: Record<string, string> = {
-  'eslint': 'Linting',
-  'biome': 'Linting',
-  'tslint': 'Linting',
-  'jshint': 'Linting',
-  'prettier': 'Formatting',
-  'biome-format': 'Formatting',
-  'typescript': 'Linting',
-  'tsc': 'Linting',
-  'jscpd': 'Duplication',
-  'sonarjs': 'Complexity',
-  'complexity-report': 'Complexity',
-  'audit': 'Security',
-  'snyk': 'Security',
-  'trivy': 'Security',
-  'npm-audit': 'Dependencies',
-  'yarn-audit': 'Dependencies',
-  'pnpm-audit': 'Dependencies',
-  'outdated': 'Dependencies',
-  'depcheck': 'Dependencies'
-};
 
 let currentPanel: vscode.WebviewPanel | undefined;
 
@@ -70,8 +50,8 @@ export async function showResults(model: ResultsModel): Promise<void> {
     currentPanel.reveal(vscode.ViewColumn.Two);
   } else {
     currentPanel = vscode.window.createWebviewPanel(
-      'codeguardResults',
-      'CodeGuard Results',
+      'codeguardMcpResults',
+      'CodeGuard MCP Results',
       vscode.ViewColumn.Two,
       {
         enableScripts: true,
@@ -90,10 +70,7 @@ export async function showResults(model: ResultsModel): Promise<void> {
       message => {
         switch (message.command) {
           case 'undoLastFix':
-            vscode.commands.executeCommand('codeguard.undoLastFix');
-            break;
-          case 'refreshResults':
-            // TODO: Implement results refresh
+            vscode.commands.executeCommand('codeguard-mcp.undoLastFix');
             break;
           case 'openFile':
             const uri = vscode.Uri.file(message.filePath);
@@ -118,69 +95,10 @@ export async function showResults(model: ResultsModel): Promise<void> {
   currentPanel.webview.html = generateResultsHtml(results, remaining);
 }
 
-function computeCategorySummaries(results: RunResult[], remaining: Issue[]): CategorySummary[] {
-  const categories: Record<string, CategorySummary> = {};
-
-  // Initialize all categories
-  const allCategories = ['Formatting', 'Linting', 'Duplication', 'Complexity', 'Security', 'Dependencies'];
-  for (const category of allCategories) {
-    categories[category] = {
-      label: category,
-      autoFixed: 0,
-      remaining: 0,
-      tools: []
-    };
-  }
-
-  // Count auto-fixed issues by category
-  for (const result of results) {
-    const category = TOOL_CATEGORY_MAP[result.tool] || 'Other';
-    if (categories[category]) {
-      categories[category].autoFixed += result.fixed || 0;
-      if (!categories[category].tools.includes(result.tool)) {
-        categories[category].tools.push(result.tool);
-      }
-    }
-  }
-
-  // Count remaining issues by category
-  for (const issue of remaining) {
-    const tool = inferToolFromRule(issue.rule);
-    const category = TOOL_CATEGORY_MAP[tool.toLowerCase()] || 'Other';
-    if (categories[category]) {
-      categories[category].remaining++;
-      if (!categories[category].tools.includes(tool)) {
-        categories[category].tools.push(tool);
-      }
-    }
-  }
-
-  return Object.values(categories).filter(cat => 
-    cat.autoFixed > 0 || cat.remaining > 0 || cat.tools.length > 0
-  );
-}
-
-function generateCategorySummariesHtml(summaries: CategorySummary[]): string {
-  if (summaries.length === 0) {
-    return '<div class="empty-state">No analysis categories found</div>';
-  }
-
-  return summaries.map(summary => `
-    <div class="category-card">
-      <div class="category-title">${summary.label}</div>
-      <div class="category-stats">
-        <span class="category-stat stat-fixed">✅ ${summary.autoFixed} fixed</span>
-        <span class="category-stat stat-remaining">⚠️ ${summary.remaining} remaining</span>
-      </div>
-      <div class="category-tools">Tools: ${summary.tools.join(', ') || 'None'}</div>
-    </div>
-  `).join('');
-}
-
 async function exportResultsToJSON(model: ResultsModel): Promise<void> {
   try {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `codeguard-results-${timestamp}.json`;
+    const filename = `codeguard-mcp-results-${timestamp}.json`;
     const tempDir = os.tmpdir();
     const filePath = path.join(tempDir, filename);
 
@@ -191,7 +109,6 @@ async function exportResultsToJSON(model: ResultsModel): Promise<void> {
         remainingCount: model.remaining.length,
         totalDuration: model.results.reduce((total, result) => total + (result.duration || 0), 0)
       },
-      categories: computeCategorySummaries(model.results, model.remaining),
       results: model.results,
       remaining: model.remaining
     };
@@ -212,29 +129,17 @@ async function exportResultsToJSON(model: ResultsModel): Promise<void> {
 }
 
 function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
-  // Calculate category summaries
-  const categorySummaries = computeCategorySummaries(results, remaining);
-  
-  // Calculate summary statistics
-  const autoFixedCount = results.reduce((total, result) => {
-    return total + (result.fixed || 0);
-  }, 0);
-
+  const autoFixedCount = results.reduce((total, result) => total + (result.fixed || 0), 0);
   const remainingCount = remaining.length;
-  const totalDuration = results.reduce((total, result) => {
-    return total + (result.duration || 0);
-  }, 0);
+  const totalDuration = results.reduce((total, result) => total + (result.duration || 0), 0);
 
-  // Extract auto-fixed issues from results
-  const autoFixedIssues = extractAutoFixedIssues(results);
-  
   return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CodeGuard Results</title>
+        <title>CodeGuard MCP Results</title>
         <style>
             body {
                 font-family: var(--vscode-font-family);
@@ -277,54 +182,6 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
             .badge-info {
                 background-color: #2196f3;
                 color: white;
-            }
-            
-            .category-summaries {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 16px;
-                margin-bottom: 32px;
-            }
-            
-            .category-card {
-                padding: 16px;
-                border: 1px solid var(--vscode-panel-border);
-                border-radius: 8px;
-                background-color: var(--vscode-sideBar-background);
-            }
-            
-            .category-title {
-                font-weight: 600;
-                font-size: 1.1em;
-                margin-bottom: 8px;
-                color: var(--vscode-symbolIcon-functionForeground);
-            }
-            
-            .category-stats {
-                display: flex;
-                gap: 12px;
-                margin-bottom: 8px;
-            }
-            
-            .category-stat {
-                font-size: 0.85em;
-                padding: 4px 8px;
-                border-radius: 12px;
-            }
-            
-            .stat-fixed {
-                background-color: rgba(76, 175, 80, 0.2);
-                color: #4caf50;
-            }
-            
-            .stat-remaining {
-                background-color: rgba(255, 152, 0, 0.2);
-                color: #ff9800;
-            }
-            
-            .category-tools {
-                font-size: 0.8em;
-                color: var(--vscode-descriptionForeground);
             }
             
             .section {
@@ -394,16 +251,6 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
                 font-size: 0.9em;
             }
             
-            .ai-suggestion {
-                margin-top: 8px;
-                padding: 8px;
-                background-color: rgba(33, 150, 243, 0.1);
-                border-left: 3px solid #2196f3;
-                border-radius: 4px;
-                font-size: 0.85em;
-                color: var(--vscode-textLink-foreground);
-            }
-            
             .action-buttons {
                 margin-top: 24px;
                 display: flex;
@@ -419,15 +266,6 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
                 font-size: 0.9em;
                 font-weight: 500;
                 transition: background-color 0.2s;
-            }
-            
-            .btn-secondary {
-                background-color: var(--vscode-button-secondaryBackground);
-                color: var(--vscode-button-secondaryForeground);
-            }
-            
-            .btn-secondary:hover {
-                background-color: var(--vscode-button-secondaryHoverBackground);
             }
             
             .btn-primary {
@@ -460,13 +298,9 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
             </div>
         </div>
 
-        <div class="category-summaries">
-            ${generateCategorySummariesHtml(categorySummaries)}
-        </div>
-
         <div class="section">
             <h2 class="section-title">🔧 Auto-fixed Issues</h2>
-            ${generateAutoFixedSection(autoFixedIssues)}
+            ${generateAutoFixedSection(results)}
         </div>
 
         <div class="section">
@@ -475,11 +309,8 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
         </div>
 
         <div class="action-buttons">
-            <button class="btn btn-secondary" onclick="undoLastFix()">
+            <button class="btn btn-primary" onclick="undoLastFix()">
                 ↶ Undo Last Fix
-            </button>
-            <button class="btn btn-secondary" onclick="refreshResults()">
-                🔄 Refresh Results
             </button>
             <button class="btn btn-primary" onclick="exportJSON()">
                 📄 Export JSON
@@ -492,12 +323,6 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
             function undoLastFix() {
                 vscode.postMessage({
                     command: 'undoLastFix'
-                });
-            }
-
-            function refreshResults() {
-                vscode.postMessage({
-                    command: 'refreshResults'
                 });
             }
 
@@ -520,40 +345,16 @@ function generateResultsHtml(results: RunResult[], remaining: Issue[]): string {
   `;
 }
 
-function extractAutoFixedIssues(results: RunResult[]): Record<string, Issue[]> {
-  const autoFixed: Record<string, Issue[]> = {};
-
-  for (const result of results) {
-    // TODO: Update RunResult interface to include detailed issues
-    // For now, create placeholder issues based on the fixed count
-    if (result.fixed && result.fixed > 0) {
-      autoFixed[result.tool] = Array.from({ length: result.fixed }, (_, i) => ({
-        file: 'placeholder.ts', // TODO: Get actual file from result
-        line: i + 1,
-        rule: 'auto-fix-rule',
-        message: `Auto-fixed issue ${i + 1}`,
-        severity: 'warning' as const,
-        fix: {
-          applied: true,
-          description: `Fixed by ${result.tool}`
-        }
-      }));
-    }
-  }
-
-  return autoFixed;
-}
-
-function generateAutoFixedSection(autoFixedByTool: Record<string, Issue[]>): string {
-  const tools = Object.keys(autoFixedByTool);
+function generateAutoFixedSection(results: RunResult[]): string {
+  const autoFixedIssues = results.filter(r => r.fixed > 0);
   
-  if (tools.length === 0) {
+  if (autoFixedIssues.length === 0) {
     return '<div class="empty-state">No auto-fixes were applied</div>';
   }
 
-  return tools.map(tool => {
-    const issues = autoFixedByTool[tool];
-    const issueItems = issues.map(issue => `
+  return autoFixedIssues.map(result => {
+    const fixedIssues = result.issues.filter(issue => issue.fix?.applied);
+    const issueItems = fixedIssues.map(issue => `
       <div class="issue-item issue-fixed">
         <div class="issue-location" onclick="openFile('${issue.file}', ${issue.line})">
           ${issue.file}:${issue.line}
@@ -565,7 +366,7 @@ function generateAutoFixedSection(autoFixedByTool: Record<string, Issue[]>): str
 
     return `
       <div class="tool-group">
-        <div class="tool-name">${tool} (${issues.length} fixes)</div>
+        <div class="tool-name">${result.tool} (${result.fixed} fixes)</div>
         ${issueItems}
       </div>
     `;
@@ -577,54 +378,22 @@ function generateRemainingSection(remaining: Issue[]): string {
     return '<div class="empty-state">🎉 No remaining issues to review!</div>';
   }
 
-  // Group by tool (inferred from rule prefix or manual grouping)
-  const byTool: Record<string, Issue[]> = {};
-  
-  for (const issue of remaining) {
-    const tool = inferToolFromRule(issue.rule);
-    if (!byTool[tool]) {
-      byTool[tool] = [];
-    }
-    byTool[tool].push(issue);
-  }
-
-  return Object.keys(byTool).map(tool => {
-    const issues = byTool[tool];
-    const issueItems = issues.map(issue => `
-      <div class="issue-item issue-remaining">
-        <div class="issue-location" onclick="openFile('${issue.file}', ${issue.line})">
-          ${issue.file}:${issue.line}
-        </div>
-        <div class="issue-rule">${issue.rule}</div>
-        <div class="issue-message">${issue.message}</div>
-        ${issue.aiSuggestion ? `<div class="ai-suggestion">💡 AI Suggestion: ${issue.aiSuggestion}</div>` : ''}
+  const issueItems = remaining.map(issue => `
+    <div class="issue-item issue-remaining">
+      <div class="issue-location" onclick="openFile('${issue.file}', ${issue.line})">
+        ${issue.file}:${issue.line}
       </div>
-    `).join('');
+      <div class="issue-rule">${issue.rule}</div>
+      <div class="issue-message">${issue.message}</div>
+    </div>
+  `).join('');
 
-    return `
-      <div class="tool-group">
-        <div class="tool-name">${tool} (${issues.length} issues)</div>
-        ${issueItems}
-      </div>
-    `;
-  }).join('');
-}
-
-function inferToolFromRule(rule: string): string {
-  // Enhanced heuristic to group issues by tool based on rule name
-  const lowerRule = rule.toLowerCase();
-  
-  if (rule.startsWith('@typescript-eslint/')) return 'typescript-eslint';
-  if (rule.startsWith('eslint-')) return 'eslint';
-  if (lowerRule.includes('biome')) return 'biome';
-  if (lowerRule.includes('prettier')) return 'prettier';
-  if (lowerRule.includes('typescript') || rule.startsWith('TS')) return 'typescript';
-  if (lowerRule.includes('security') || lowerRule.includes('audit')) return 'security';
-  if (lowerRule.includes('complexity')) return 'sonarjs';
-  if (lowerRule.includes('duplicate') || lowerRule.includes('jscpd')) return 'jscpd';
-  if (lowerRule.includes('outdated') || lowerRule.includes('dependency')) return 'outdated';
-  
-  return 'other';
+  return `
+    <div class="tool-group">
+      <div class="tool-name">Remaining Issues (${remaining.length})</div>
+      ${issueItems}
+    </div>
+  `;
 }
 
 function formatDuration(milliseconds: number): string {
