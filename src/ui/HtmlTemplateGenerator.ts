@@ -283,10 +283,10 @@ export class HtmlTemplateGenerator {
                 <div class="tool-description">${tool.desc}</div>
                 <div class="tool-buttons">
                     <button class="run-btn" onclick="runTool('${tool.cmd}', '${tool.name}', '${tool.id}')">
-                      Run
+                      Run with MCP
                     </button>
                     <button class="ai-btn" onclick="runWithAI('${tool.cmd}', '${tool.name}', '${tool.id}')">
-                      Run with AI
+                      Advanced AI
                     </button>
                 </div>
             </div>`;

@@ -7,7 +7,7 @@ describe('CodeGuard Pro Extension - Quality Tools Integration', () => {
     
     // Inject our test environment
     cy.get('body').then(($body) => {
-      $body.html('<div id="quality-hub">Quality Hub</div>')
+      $body.html('<div id="codeguard-pro">CodeGuard Pro</div>')
     })
   })
 
@@ -36,7 +36,7 @@ describe('CodeGuard Pro Extension - Quality Tools Integration', () => {
         }
       }).as('eslintAnalysis')
       
-      cy.get('#quality-hub').should('contain.text', 'Quality Hub')
+      cy.get('#codeguard-pro').should('contain.text', 'CodeGuard Pro')
       cy.log('ESLint analysis completed successfully')
     })
 

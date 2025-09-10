@@ -1,6 +1,6 @@
-# Contributing to Quality Hub
+# Contributing to CodeGuard Pro
 
-Thank you for your interest in contributing to Quality Hub! We welcome contributions from the community.
+Thank you for your interest in contributing to CodeGuard Pro! We welcome contributions from the community.
 
 ## Development Setup
 
@@ -59,7 +59,7 @@ To add a new quality tool:
    {
      "command": "quality-hub.newTool",
      "title": "Tool Display Name",
-     "category": "Quality Hub",
+     "category": "CodeGuard Pro",
      "icon": "$(icon-name)"
    }
    ```

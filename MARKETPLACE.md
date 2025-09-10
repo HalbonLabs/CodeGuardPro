@@ -1,6 +1,6 @@
 # Publishing to VS Code Marketplace
 
-This guide will help you publish the Quality Hub extension to the VS Code Marketplace.
+This guide will help you publish the CodeGuard Pro extension to the VS Code Marketplace.
 
 ## Prerequisites
 
@@ -110,7 +110,7 @@ vsce publish patch  # Increments patch version
 ### 3. Verify Publication
 
 1. Go to [VS Code Marketplace](https://marketplace.visualstudio.com/vscode)
-2. Search for "Quality Hub"
+2. Search for "CodeGuard Pro"
 3. Verify your extension appears and information is correct
 
 ## Post-Publication

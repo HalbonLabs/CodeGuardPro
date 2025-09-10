@@ -1,12 +1,12 @@
 /**
- * Basic Quality Hub Extension Tests
+ * Basic CodeGuard Pro Extension Tests
  * Simple tests to verify extension configuration and setup
  */
 
 const path = require('path')
 const fs = require('fs')
 
-describe('Quality Hub Extension - Configuration Tests', () => {
+describe('CodeGuard Pro Extension - Configuration Tests', () => {
   const projectRoot = path.join(__dirname, '..')
 
   beforeEach(() => {

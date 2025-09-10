@@ -2,7 +2,7 @@
  * Simple configuration tests that work with Jest
  */
 
-describe('Quality Hub Extension - Simple Tests', () => {
+describe('CodeGuard Pro Extension - Simple Tests', () => {
   describe('Package.json Tests', () => {
     test('should load package.json successfully', () => {
       const packageJson = require('../package.json')
@@ -38,7 +38,7 @@ describe('Quality Hub Extension - Simple Tests', () => {
 
       expect(jestCommand).toBeDefined()
       expect(jestCommand.title).toBe('Run Jest Tests')
-      expect(jestCommand.category).toBe('Quality Hub')
+      expect(jestCommand.category).toBe('CodeGuard Pro')
     })
 
     test('should have required dependencies', () => {
@@ -185,7 +185,7 @@ describe('Quality Hub Extension - Simple Tests', () => {
   })
 
   describe('Command Structure Tests', () => {
-    test('should have all required Quality Hub commands', () => {
+    test('should have all required CodeGuard Pro commands', () => {
       const packageJson = require('../package.json')
       const commands = packageJson.contributes.commands
 
@@ -202,7 +202,7 @@ describe('Quality Hub Extension - Simple Tests', () => {
         const command = commands.find((cmd) => cmd.command === cmdId)
         expect(command).toBeDefined()
         expect(command.title).toBeDefined()
-        expect(command.category).toBe('Quality Hub')
+        expect(command.category).toBe('CodeGuard Pro')
       })
     })
 
@@ -211,7 +211,7 @@ describe('Quality Hub Extension - Simple Tests', () => {
       const commands = packageJson.contributes.commands
 
       commands.forEach((command) => {
-        expect(command.category).toBe('Quality Hub')
+        expect(command.category).toBe('CodeGuard Pro')
         expect(command.title).toBeDefined()
         expect(typeof command.title).toBe('string')
         expect(command.title.length).toBeGreaterThan(0)

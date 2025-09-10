@@ -1,4 +1,4 @@
-// Quality Hub Provider for CodeGuard Pro Extension
+// CodeGuard Pro Provider for VS Code Extension
 import * as vscode from 'vscode';
 
 export class QualityHubProvider implements vscode.TreeDataProvider<QualityItem> {

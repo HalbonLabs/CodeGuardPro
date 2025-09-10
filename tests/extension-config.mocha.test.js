@@ -3,7 +3,7 @@ const { expect } = require('chai')
 const fs = require('fs')
 const path = require('path')
 
-describe('Quality Hub Extension - Mocha Configuration Tests', function () {
+describe('CodeGuard Pro Extension - Mocha Configuration Tests', function () {
   this.timeout(10000)
 
   const projectRoot = path.resolve(__dirname, '..')

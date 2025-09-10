@@ -1,9 +1,9 @@
-// Vitest configuration tests for Quality Hub extension
+// Vitest configuration tests for CodeGuard Pro extension
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import fs from "fs";
 import path from "path";
 
-describe("Quality Hub Extension - Vitest Configuration Tests", () => {
+describe("CodeGuard Pro Extension - Vitest Configuration Tests", () => {
   const projectRoot = path.resolve(__dirname, "..");
 
   beforeAll(() => {

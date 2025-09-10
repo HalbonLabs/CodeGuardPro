@@ -1,8 +1,8 @@
 {
   "name": "codeguard-pro",
   "displayName": "CodeGuard Pro",
-  "description": "Professional code quality suite with 29 integrated tools: ESLint, Biome, Playwright, security scanning, complexity analysis, and API integrations for comprehensive project analysis",
-  "version": "1.0.5",
+  "description": "AI-powered code quality suite using MCP (Model Context Protocol) tools. Run ESLint, security scans, testing frameworks, and code analysis through Copilot with 29+ integrated quality tools",
+  "version": "1.0.6",
   "publisher": "HalbonLabs",
   "icon": "icon.png",
   "author": {
@@ -46,222 +46,35 @@
     "javascript"
   ],
   "activationEvents": [
-    "onStartupFinished",
-    "onView:quality-hub.sidebarView"
+    "onStartupFinished"
   ],
   "main": "./out/simple-extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "quality-hub.showSimple",
+        "command": "codeguard-pro.showSimple",
         "title": "Open CodeGuard Pro (Sidebar)",
         "category": "CodeGuard Pro",
         "icon": "$(dashboard)"
       },
       {
-        "command": "quality-hub.openSettings",
+        "command": "codeguard-pro.openSettings",
         "title": "Open Settings",
         "category": "CodeGuard Pro",
         "icon": "$(gear)"
       },
       {
-        "command": "quality-hub.test",
+        "command": "codeguard-pro.test",
         "title": "Test Extension",
         "category": "CodeGuard Pro",
         "icon": "$(pulse)"
-      },
-      {
-        "command": "quality-hub.eslintCode",
-        "title": "Run ESLint",
-        "category": "CodeGuard Pro",
-        "icon": "$(check)"
-      },
-      {
-        "command": "quality-hub.biomeCode",
-        "title": "Run Biome",
-        "category": "CodeGuard Pro",
-        "icon": "$(zap)"
-      },
-      {
-        "command": "quality-hub.typescriptEslint",
-        "title": "Run TypeScript ESLint",
-        "category": "CodeGuard Pro",
-        "icon": "$(symbol-class)"
-      },
-      {
-        "command": "quality-hub.prettier",
-        "title": "Run Prettier",
-        "category": "CodeGuard Pro",
-        "icon": "$(symbol-color)"
-      },
-      {
-        "command": "quality-hub.standardjs",
-        "title": "Run StandardJS",
-        "category": "CodeGuard Pro",
-        "icon": "$(star)"
-      },
-      {
-        "command": "quality-hub.npmAudit",
-        "title": "Run npm audit",
-        "category": "CodeGuard Pro",
-        "icon": "$(shield)"
-      },
-      {
-        "command": "quality-hub.eslintSecurity",
-        "title": "Run ESLint Security",
-        "category": "CodeGuard Pro",
-        "icon": "$(shield-check)"
-      },
-      {
-        "command": "quality-hub.retireJs",
-        "title": "Run Retire.js",
-        "category": "CodeGuard Pro",
-        "icon": "$(lock)"
-      },
-      {
-        "command": "quality-hub.auditCi",
-        "title": "Run audit-ci",
-        "category": "CodeGuard Pro",
-        "icon": "$(verified)"
-      },
-      {
-        "command": "quality-hub.playwright",
-        "title": "Run Playwright Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(beaker)"
-      },
-      {
-        "command": "quality-hub.cypress",
-        "title": "Run Cypress Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(browser)"
-      },
-      {
-        "command": "quality-hub.jest",
-        "title": "Run Jest Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(beaker)"
-      },
-      {
-        "command": "quality-hub.mocha",
-        "title": "Run Mocha Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(test-view-icon)"
-      },
-      {
-        "command": "quality-hub.vitest",
-        "title": "Run Vitest Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(rocket)"
-      },
-      {
-        "command": "quality-hub.webdriverio",
-        "title": "Run WebdriverIO Tests",
-        "category": "CodeGuard Pro",
-        "icon": "$(device-mobile)"
-      },
-      {
-        "command": "quality-hub.sonarJs",
-        "title": "Run SonarJS Analysis",
-        "category": "CodeGuard Pro",
-        "icon": "$(graph)"
-      },
-      {
-        "command": "quality-hub.sonarQubeApi",
-        "title": "Connect to SonarQube Server",
-        "category": "CodeGuard Pro",
-        "icon": "$(cloud)"
-      },
-      {
-        "command": "quality-hub.codacyApi",
-        "title": "Connect to Codacy Platform",
-        "category": "CodeGuard Pro",
-        "icon": "$(shield-check)"
-      },
-      {
-        "command": "quality-hub.codeClimateApi",
-        "title": "Connect to CodeClimate",
-        "category": "CodeGuard Pro",
-        "icon": "$(pulse)"
-      },
-      {
-        "command": "quality-hub.snykCodeApi",
-        "title": "Connect to Snyk Code",
-        "category": "CodeGuard Pro",
-        "icon": "$(bug)"
-      },
-      {
-        "command": "quality-hub.codeFactorApi",
-        "title": "Connect to CodeFactor",
-        "category": "CodeGuard Pro",
-        "icon": "$(telescope)"
-      },
-      {
-        "command": "quality-hub.plato",
-        "title": "Run Cyclomatic Complexity",
-        "category": "CodeGuard Pro",
-        "icon": "$(chart)"
-      },
-      {
-        "command": "quality-hub.eslintComplexity",
-        "title": "Run ESLint Complexity",
-        "category": "CodeGuard Pro",
-        "icon": "$(graph-line)"
-      },
-      {
-        "command": "quality-hub.madgeDeps",
-        "title": "Analyze Dependencies with Madge",
-        "category": "CodeGuard Pro",
-        "icon": "$(package)"
-      },
-      {
-        "command": "quality-hub.depcheck",
-        "title": "Run Depcheck",
-        "category": "CodeGuard Pro",
-        "icon": "$(package-dependencies)"
-      },
-      {
-        "command": "quality-hub.owaspCheck",
-        "title": "Run OWASP Dependency Check",
-        "category": "CodeGuard Pro",
-        "icon": "$(security)"
-      },
-      {
-        "command": "quality-hub.typeCheck",
-        "title": "Type Check",
-        "category": "CodeGuard Pro",
-        "icon": "$(type-hierarchy)"
-      },
-      {
-        "command": "quality-hub.generateReport",
-        "title": "Generate Quality Report",
-        "category": "CodeGuard Pro",
-        "icon": "$(file-text)"
-      },
-      {
-        "command": "quality-hub.duplicateCode",
-        "title": "Find Duplicate Code",
-        "category": "CodeGuard Pro",
-        "icon": "$(copy)"
-      },
-      {
-        "command": "quality-hub.codeStructure",
-        "title": "Analyze Code Structure",
-        "category": "CodeGuard Pro",
-        "icon": "$(symbol-structure)"
-      },
-      {
-        "command": "quality-hub.updateDependencies",
-        "title": "Check Dependency Updates",
-        "category": "CodeGuard Pro",
-        "icon": "$(arrow-up)"
       }
     ],
     "views": {
-      "quality-hub-webview": [
+      "codeguard-pro-webview": [
         {
-          "id": "quality-hub.sidebarView",
-          "name": "Quality Tools",
+          "id": "codeguard-pro.sidebarView",
+          "name": "CodeGuard Pro Tools",
           "type": "webview",
           "when": "true",
           "icon": "$(shield)"
@@ -271,7 +84,7 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "quality-hub-webview",
+          "id": "codeguard-pro-webview",
           "title": "CodeGuard Pro",
           "icon": "$(shield)"
         }
@@ -280,17 +93,17 @@
     "configuration": {
       "title": "CodeGuard Pro",
       "properties": {
-        "quality-hub.enableStatusBar": {
+        "codeguard-pro.enableStatusBar": {
           "type": "boolean",
           "default": true,
           "description": "Show CodeGuard Pro status in status bar"
         },
-        "quality-hub.autoLintOnSave": {
+        "codeguard-pro.autoLintOnSave": {
           "type": "boolean",
           "default": false,
           "description": "Automatically lint and fix code on save (uses Biome)"
         },
-        "quality-hub.testFramework": {
+        "codeguard-pro.testFramework": {
           "type": "string",
           "enum": [
             "playwright",
@@ -301,22 +114,22 @@
           "default": "playwright",
           "description": "Preferred E2E testing framework"
         },
-        "quality-hub.duplicateCodeThreshold": {
+        "codeguard-pro.duplicateCodeThreshold": {
           "type": "number",
           "default": 100,
           "description": "Minimum token threshold for duplicate code detection"
         },
-        "quality-hub.complexityThreshold": {
+        "codeguard-pro.complexityThreshold": {
           "type": "number",
           "default": 15,
           "description": "Maximum cognitive complexity threshold"
         },
-        "quality-hub.enableSonarAnalysis": {
+        "codeguard-pro.enableSonarAnalysis": {
           "type": "boolean",
           "default": true,
           "description": "Enable SonarJS code quality analysis"
         },
-        "quality-hub.securityLevel": {
+        "codeguard-pro.securityLevel": {
           "type": "string",
           "enum": [
             "low",
@@ -327,47 +140,7 @@
           "default": "moderate",
           "description": "Security vulnerability level threshold"
         },
-        "quality-hub.sonarqube-api.server-url": {
-          "type": "string",
-          "default": "",
-          "description": "SonarQube Server URL (e.g., https://sonarcloud.io)"
-        },
-        "quality-hub.sonarqube-api.api-token": {
-          "type": "string",
-          "default": "",
-          "description": "SonarQube API Token"
-        },
-        "quality-hub.codacy-api.api-token": {
-          "type": "string",
-          "default": "",
-          "description": "Codacy API Token"
-        },
-        "quality-hub.codacy-api.project-id": {
-          "type": "string",
-          "default": "",
-          "description": "Codacy Project ID"
-        },
-        "quality-hub.codeclimate-api.api-token": {
-          "type": "string",
-          "default": "",
-          "description": "CodeClimate API Token"
-        },
-        "quality-hub.snyk-code-api.api-token": {
-          "type": "string",
-          "default": "",
-          "description": "Snyk API Token"
-        },
-        "quality-hub.codefactor-api.api-token": {
-          "type": "string",
-          "default": "",
-          "description": "CodeFactor API Token"
-        },
-        "quality-hub.codefactor-api.repository-url": {
-          "type": "string",
-          "default": "",
-          "description": "CodeFactor Repository URL"
-        },
-        "quality-hub.disabledTools": {
+        "codeguard-pro.disabledTools": {
           "type": "array",
           "items": {
             "type": "string"
@@ -375,95 +148,351 @@
           "default": [],
           "description": "List of disabled tool IDs"
         },
-        "quality-hub.autoExpandCategories": {
+        "codeguard-pro.autoExpandCategories": {
           "type": "boolean",
           "default": true,
           "description": "Auto-expand all categories on startup"
         },
-        "quality-hub.showToolDescriptions": {
+        "codeguard-pro.showToolDescriptions": {
           "type": "boolean",
           "default": true,
           "description": "Show detailed tool descriptions in list view"
+        },
+        "codeguard-pro.mcp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable MCP (Model Context Protocol) integration for AI-powered analysis"
+        },
+
+        "codeguard-pro.mcp.tools.eslint.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable ESLint MCP server for JavaScript/TypeScript linting"
+        },
+        "codeguard-pro.mcp.tools.eslint.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "ESLint MCP server endpoint URL (leave empty for local execution)"
+        },
+        "codeguard-pro.mcp.tools.eslint.configPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to ESLint configuration file (optional)"
+        },
+
+        "codeguard-pro.mcp.tools.biome.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Biome MCP server for fast linting and formatting"
+        },
+        "codeguard-pro.mcp.tools.biome.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Biome MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.prettier.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Prettier MCP server for code formatting"
+        },
+        "codeguard-pro.mcp.tools.prettier.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Prettier MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.typescript.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable TypeScript MCP server for type checking"
+        },
+        "codeguard-pro.mcp.tools.typescript.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "TypeScript MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.npmAudit.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable npm audit MCP server for security vulnerability scanning"
+        },
+        "codeguard-pro.mcp.tools.npmAudit.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "npm audit MCP server endpoint URL (leave empty for local execution)"
+        },
+        "codeguard-pro.mcp.tools.npmAudit.severity": {
+          "type": "string",
+          "enum": ["low", "moderate", "high", "critical"],
+          "default": "moderate",
+          "description": "Minimum severity level for npm audit reports"
+        },
+
+        "codeguard-pro.mcp.tools.retireJs.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Retire.js MCP server for JavaScript library vulnerability scanning"
+        },
+        "codeguard-pro.mcp.tools.retireJs.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Retire.js MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.owasp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable OWASP Dependency Check MCP server"
+        },
+        "codeguard-pro.mcp.tools.owasp.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "OWASP Dependency Check MCP server endpoint URL"
+        },
+
+        "codeguard-pro.mcp.tools.playwright.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Playwright MCP server for E2E testing"
+        },
+        "codeguard-pro.mcp.tools.playwright.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Playwright MCP server endpoint URL (leave empty for local execution)"
+        },
+        "codeguard-pro.mcp.tools.playwright.browser": {
+          "type": "string",
+          "enum": ["chromium", "firefox", "webkit", "all"],
+          "default": "chromium",
+          "description": "Default browser for Playwright tests"
+        },
+
+        "codeguard-pro.mcp.tools.cypress.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Cypress MCP server for E2E testing"
+        },
+        "codeguard-pro.mcp.tools.cypress.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Cypress MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.jest.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Jest MCP server for unit testing"
+        },
+        "codeguard-pro.mcp.tools.jest.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Jest MCP server endpoint URL (leave empty for local execution)"
+        },
+        "codeguard-pro.mcp.tools.jest.coverage": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable test coverage reporting in Jest"
+        },
+
+        "codeguard-pro.mcp.tools.vitest.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Vitest MCP server for fast unit testing"
+        },
+        "codeguard-pro.mcp.tools.vitest.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Vitest MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.sonarJs.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable SonarJS MCP server for code quality analysis"
+        },
+        "codeguard-pro.mcp.tools.sonarJs.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "SonarJS MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.plato.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Plato MCP server for code complexity analysis"
+        },
+        "codeguard-pro.mcp.tools.plato.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Plato MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.jscpd.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable JSCPD MCP server for duplicate code detection"
+        },
+        "codeguard-pro.mcp.tools.jscpd.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "JSCPD MCP server endpoint URL (leave empty for local execution)"
+        },
+        "codeguard-pro.mcp.tools.jscpd.threshold": {
+          "type": "number",
+          "default": 100,
+          "description": "Minimum token count for duplicate detection"
+        },
+
+        "codeguard-pro.mcp.tools.madge.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Madge MCP server for dependency analysis"
+        },
+        "codeguard-pro.mcp.tools.madge.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Madge MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.depcheck.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Depcheck MCP server for unused dependency detection"
+        },
+        "codeguard-pro.mcp.tools.depcheck.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Depcheck MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.tools.npmCheckUpdates.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable npm-check-updates MCP server for dependency updates"
+        },
+        "codeguard-pro.mcp.tools.npmCheckUpdates.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "npm-check-updates MCP server endpoint URL (leave empty for local execution)"
+        },
+
+        "codeguard-pro.mcp.timeout": {
+          "type": "number",
+          "default": 30000,
+          "description": "MCP server request timeout in milliseconds"
+        },
+        "codeguard-pro.mcp.retryAttempts": {
+          "type": "number",
+          "default": 3,
+          "description": "Number of retry attempts for failed MCP requests"
+        },
+        "codeguard-pro.mcp.retryDelay": {
+          "type": "number",
+          "default": 1000,
+          "description": "Delay between retry attempts in milliseconds"
+        },
+        "codeguard-pro.mcp.logLevel": {
+          "type": "string",
+          "enum": ["error", "warn", "info", "debug"],
+          "default": "info",
+          "description": "MCP server logging level"
+        },
+        "codeguard-pro.mcp.cache.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable MCP response caching to improve performance"
+        },
+        "codeguard-pro.mcp.cache.ttl": {
+          "type": "number",
+          "default": 300000,
+          "description": "MCP cache TTL (time to live) in milliseconds"
+        },
+        "codeguard-pro.mcp.fallbackToLocal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Fallback to local tool execution when MCP servers are unavailable"
         }
       }
     },
     "menus": {
       "editor/context": [
         {
-          "submenu": "quality-hub.submenu",
+          "submenu": "codeguard-pro.submenu",
           "group": "navigation"
         }
       ],
-      "quality-hub.submenu": [
+      "codeguard-pro.submenu": [
         {
-          "command": "quality-hub.eslintCode",
+          "command": "codeguard-pro.eslintCode",
           "group": "1_linting"
         },
         {
-          "command": "quality-hub.biomeCode",
+          "command": "codeguard-pro.biomeCode",
           "group": "1_linting"
         },
         {
-          "command": "quality-hub.typescriptEslint",
+          "command": "codeguard-pro.typescriptEslint",
           "group": "1_linting"
         },
         {
-          "command": "quality-hub.prettier",
+          "command": "codeguard-pro.prettier",
           "group": "1_linting"
         },
         {
-          "command": "quality-hub.npmAudit",
+          "command": "codeguard-pro.npmAudit",
           "group": "2_security"
         },
         {
-          "command": "quality-hub.eslintSecurity",
+          "command": "codeguard-pro.eslintSecurity",
           "group": "2_security"
         },
         {
-          "command": "quality-hub.retireJs",
+          "command": "codeguard-pro.retireJs",
           "group": "2_security"
         },
         {
-          "command": "quality-hub.playwright",
+          "command": "codeguard-pro.playwright",
           "group": "3_testing"
         },
         {
-          "command": "quality-hub.cypress",
+          "command": "codeguard-pro.cypress",
           "group": "3_testing"
         },
         {
-          "command": "quality-hub.jest",
+          "command": "codeguard-pro.jest",
           "group": "3_testing"
         },
         {
-          "command": "quality-hub.sonarJs",
+          "command": "codeguard-pro.sonarJs",
           "group": "4_analysis"
         },
         {
-          "command": "quality-hub.plato",
+          "command": "codeguard-pro.plato",
           "group": "4_analysis"
         },
         {
-          "command": "quality-hub.duplicateCode",
+          "command": "codeguard-pro.duplicateCode",
           "group": "4_analysis"
         },
         {
-          "command": "quality-hub.madgeDeps",
+          "command": "codeguard-pro.madgeDeps",
           "group": "5_dependencies"
         },
         {
-          "command": "quality-hub.depcheck",
+          "command": "codeguard-pro.depcheck",
           "group": "5_dependencies"
         },
         {
-          "command": "quality-hub.updateDependencies",
+          "command": "codeguard-pro.updateDependencies",
           "group": "5_dependencies"
         }
       ]
     },
     "submenus": [
       {
-        "id": "quality-hub.submenu",
+        "id": "codeguard-pro.submenu",
         "label": "CodeGuard Pro"
       }
     ]

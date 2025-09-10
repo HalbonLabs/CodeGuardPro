@@ -1,8 +1,15 @@
 # CodeGuard Pro
 
-**CodeGuard Pro** is a comprehensive VS Code extension that brings together all the essential code quality, security, and testing tools into one convenient interface. Stop switching between multiple extensions and terminal commands - manage your entire code quality workflow from a single sidebar panel.
+**CodeGuard Pro** is an AI-powered VS Code extension that leverages Model Context Protocol (MCP) tools to provide comprehensive code quality, security, and testing analysis. When you click on any tool, it enables the corresponding MCP server and runs the analysis through Copilot, giving you intelligent, context-aware results.
 
 ## 🚀 Features
+
+### 🤖 AI-Powered Analysis
+
+- **MCP Integration**: Uses Model Context Protocol for standardized tool communication
+- **Copilot Integration**: Runs all tools through GitHub Copilot for enhanced analysis
+- **Intelligent Prompts**: Context-aware prompts that guide Copilot to run the right tools
+- **Real-time Results**: Get immediate feedback and actionable insights
 
 ### 🎯 All-in-One Quality Dashboard
 
@@ -47,28 +54,33 @@
 - **Status Bar Integration**: Quick access to quality tools
 - **Tree View Panel**: Organized quality actions in sidebar
 
-## 📋 Commands
+## � How It Works
 
-### Primary Commands
+### MCP-Powered Tool Execution
 
-- `CodeGuard Pro: Lint & Fix Code` - Run linting with automatic fixes
-- `CodeGuard Pro: Run Security Scan` - Check for security vulnerabilities
-- `CodeGuard Pro: Advanced Security Audit` - Comprehensive security analysis
-- `CodeGuard Pro: Run E2E Tests` - Execute end-to-end tests
+1. **Click a Tool**: Select any quality tool from the sidebar
+2. **MCP Activation**: The extension opens Copilot chat with a specialized prompt
+3. **Tool Execution**: Copilot runs the appropriate MCP tool (ESLint MCP, Code Runner MCP, etc.)
+4. **Results Analysis**: Get intelligent analysis and recommendations
+5. **Auto-Fixes**: Many tools can automatically apply fixes when possible
 
-### Analysis Commands
+### Supported MCP Tools
 
-- `CodeGuard Pro: Code Metrics & Complexity` - Detailed complexity analysis
-- `CodeGuard Pro: Find Duplicate Code` - Detect code duplication
-- `CodeGuard Pro: Analyze Dependencies` - Check unused/vulnerable dependencies
-- `CodeGuard Pro: Code Structure Analysis` - Dependency graphs and architecture
-- `CodeGuard Pro: Check Dependency Updates` - Find outdated packages
+- **ESLint MCP**: Direct integration with ESLint for linting
+- **Codacy MCP**: Code quality analysis through Codacy platform
+- **Code Runner MCP**: Execute any terminal command through MCP
+- **Sequential Thinking MCP**: Complex analysis and reasoning
 
-### Utility Commands
+### Example Workflow
 
-- `CodeGuard Pro: Type Check` - Run TypeScript type checking
-- `CodeGuard Pro: Generate Quality Report` - Create detailed quality report
-- `CodeGuard Pro: Show Quality Panel` - Open the CodeGuard Pro sidebar panel
+```mermaid
+graph TD
+    A[User clicks ESLint tool] --> B[Extension opens Copilot chat]
+    B --> C[Copilot runs mcp_eslint_lint-files]
+    C --> D[ESLint analyzes codebase]
+    D --> E[Results displayed in chat]
+    E --> F[Auto-fix suggestions applied]
+```
 
 ## ⚙️ Configuration
 
@@ -145,22 +157,35 @@ The extension tracks and reports on:
 
 - Node.js 18+
 - npm or yarn
-- VS Code
+- VS Code with GitHub Copilot
+- MCP servers configured in Copilot settings
 
 ### Installation
 
 1. Install the extension from VS Code marketplace
-2. Open a project in VS Code
-3. The CodeGuard Pro panel will appear in the Explorer sidebar
-4. Click any tool to start analysis
+2. Ensure GitHub Copilot is installed and configured
+3. Configure MCP servers in your Copilot settings
+4. Open a project in VS Code
+5. The CodeGuard Pro panel will appear in the Explorer sidebar
 
 ### Quick Start
 
-1. **Open Command Palette** (`Ctrl+Shift+P`)
-2. Search for "CodeGuard Pro"
-3. Run `CodeGuard Pro: Lint & Fix Code` to start
-4. Check the **CodeGuard Pro panel** in Explorer for more tools
-5. Monitor the **status bar** for quick access
+1. **Open the Sidebar**: Click the CodeGuard Pro icon in the activity bar
+2. **Choose a Tool**: Click any tool (e.g., "ESLint" under Linting & Formatting)
+3. **Copilot Chat Opens**: The extension automatically opens Copilot chat with the right prompt
+4. **Analysis Runs**: Copilot executes the MCP tool and analyzes your code
+5. **Review Results**: Get intelligent feedback and apply fixes
+
+### MCP Server Setup
+
+To get the full benefit of CodeGuard Pro, ensure these MCP servers are configured:
+
+- **ESLint MCP**: For direct ESLint integration
+- **Codacy MCP**: For code quality analysis
+- **Code Runner MCP**: For executing terminal commands
+- **Sequential Thinking MCP**: For complex analysis tasks
+
+Configure MCP servers in your GitHub Copilot settings or organization settings.
 
 ## 📈 Development
 

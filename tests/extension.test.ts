@@ -3,7 +3,7 @@
  * Unit tests for the main extension activation and deactivation
  */
 
-describe("Quality Hub Extension Basic Tests", () => {
+describe("CodeGuard Pro Extension Basic Tests", () => {
   beforeEach(() => {
     // Reset all mocks
     jest.clearAllMocks();

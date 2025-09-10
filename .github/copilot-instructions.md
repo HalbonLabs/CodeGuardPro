@@ -3,13 +3,13 @@
 - [x] Verify that the copilot-instructions.md file in the .github directory is created.
 
 - [x] Clarify Project Requirements
-<!-- VS Code extension for code quality hub with UI panels, status bar integration, and built-in quality tools including linting, security scanning, E2E testing, and code analysis -->
+<!-- VS Code extension for CodeGuard Pro with UI panels, status bar integration, and built-in quality tools including linting, security scanning, E2E testing, and code analysis -->
 
 - [x] Scaffold the Project
 <!-- Created VS Code extension structure with package.json, TypeScript config, and source files -->
 
 - [x] Customize the Project
-<!-- Created Quality Hub extension with UI panels, status bar, commands, and quality tools integration -->
+<!-- Created CodeGuard Pro extension with UI panels, status bar, commands, and quality tools integration -->
 
 - [x] Install Required Extensions
 <!-- No additional extensions needed for this VS Code extension project -->

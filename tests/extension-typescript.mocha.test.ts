@@ -17,7 +17,7 @@ interface MockQualityService {
   runE2ETests(framework: string, spec: string, headless: boolean, browser: string): Promise<string>;
 }
 
-describe("Quality Hub Extension - TypeScript Mocha Tests", function () {
+describe("CodeGuard Pro Extension - TypeScript Mocha Tests", function () {
   this.timeout(10000);
 
   const projectRoot = path.resolve(__dirname, "..");

@@ -1,11 +1,11 @@
-// Advanced TypeScript tests for Quality Hub extension using Vitest
+// Advanced TypeScript tests for CodeGuard Pro extension using Vitest
 import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import fs from "fs";
 import path from "path";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-describe("Quality Hub Extension - TypeScript Vitest Tests", () => {
+describe("CodeGuard Pro Extension - TypeScript Vitest Tests", () => {
   const projectRoot = path.resolve(__dirname, "..");
 
   beforeAll(() => {
